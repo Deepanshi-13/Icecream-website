@@ -1,0 +1,13 @@
+button{
+    background-color: rgb(219, 71, 120);
+    color: white;
+    padding: 12px 24px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+}
+button:hover{
+    background-color: #ff85c1;
+}

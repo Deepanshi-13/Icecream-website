@@ -1,0 +1,90 @@
+.craft-box {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 2rem;
+    padding: 5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .craft-image {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    flex-shrink: 0;
+  }
+  
+  .left-image,
+  .right-image {
+    position: absolute;
+    width: 300px;
+  }
+  
+  .left-image img,
+  .right-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .left-image {
+    left: 0;
+    top: 0;
+    z-index: 1;
+  }
+  
+  .right-image {
+    left: 80px;
+    top: 170px;  
+    z-index: 2;
+  }
+  
+  .craft-content,
+  .craft-para,
+  .arrow-box {
+    margin-bottom: 1rem;
+  }
+  
+  .craft-content h3 {
+    margin: 0.5rem 0;
+    font-size: 1.8rem;
+    color: #333;
+  }
+  
+  .craft-para p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.5;
+  }
+  
+  .arrow-box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-items: flex-start;
+    gap: 1rem;
+    flex-direction: column;
+  }
+  
+  .arrow-div {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .arrow-div h4 {
+    margin: 0;
+    font-size: 1rem;
+  }
+  
+   button {
+    padding: 0.6rem 1.2rem;
+    background-color: #f11273;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
