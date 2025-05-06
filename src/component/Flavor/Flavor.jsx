@@ -18,13 +18,13 @@ const Seller = () => {
         </div>
         <div className="seller-button">
           <div className="top-seller">
-            <button>Top Seller</button>
+           <Button value="Top Seller"/>
           </div>
           <div className="top-trending">
-             <button>Top Trending</button>
+             <Button value="Top Trending"/>
           </div>
           <div className="new-products">
-             <button>New Products</button>
+          <Button value="New Products"/>
           </div>
         </div>
       </div>
@@ -124,7 +124,7 @@ const Flavor = () => {
                     </div>
                   </div>
                 </div>
-                <Button />
+                <Button value="Buy Now" />
               </div>
            
           );

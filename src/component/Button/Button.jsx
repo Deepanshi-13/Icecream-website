@@ -1,10 +1,11 @@
 import React from 'react';
 import "./button.css";
 
-const Button = () => {
+const Button = (prop) => {
   return (
     <>
-    <button>Buy Now</button>
+    
+    <button>{prop.value}</button>
       
     </>
   )

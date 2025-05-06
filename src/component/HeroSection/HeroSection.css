@@ -11,7 +11,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 60px 80px;
+  padding: 0px 80px;
   font-family: 'Poppins', sans-serif;
   flex-wrap: wrap;
   gap: 40px;

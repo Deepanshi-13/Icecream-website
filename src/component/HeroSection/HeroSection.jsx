@@ -88,7 +88,7 @@ const HeroSection = () => {
             <p>The perfect blend of creamy and dreamy</p>
             <p>Taste the magic in every scoop</p>
             <div className="shopnow-div">
-              <Button/>
+              <Button value="Buy Now"/>
               <button className="more-flavor">More Flavor</button>
             </div>
           </div>
