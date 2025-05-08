@@ -1,11 +1,11 @@
 import React from 'react';
 import "./button.css";
 
-const Button = (prop) => {
+const Button = (props , onClick) => {
   return (
     <>
     
-    <button>{prop.value}</button>
+    <button onClick={props.onClick}>{props.value}</button>
       
     </>
   )

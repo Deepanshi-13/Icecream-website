@@ -1,6 +1,5 @@
 import React from "react";
 import "./SpecialItems.css";
-import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import falooda from "../../assets/falooda.png";
 import matkaKulfi from "../../assets/matkaKulfi.png";
 import icecreamRoll from "../../assets/icecreamRoll.png";
@@ -9,13 +8,14 @@ import tuttiFrutti from "../../assets/tuttiFruti.png"
 import cone from "../../assets/cone.png";
 import Button from "../Button/Button";
 
+
 const SpecialItems = () => {
   const specialIcecream = [
     {
       id: "1",
       image: falooda,
       flavor: "Falooda",
-      background: "#fce8c3",
+      background: "#FFD1DC",
       rating: "4",
       previousPrize: "₹85",
       prize: "₹80",
@@ -24,7 +24,7 @@ const SpecialItems = () => {
       id: "2",
       image: matkaKulfi,
       flavor: "Matka Kulfi",
-      background: "#fce8c3",
+      background: "#E0C097 ",
       rating: "4",
       previousPrize: "₹85",
       prize: "₹80",
@@ -34,7 +34,7 @@ const SpecialItems = () => {
       id: "3",
       image: icecreamRoll,
       flavor: "Icecream Roll",
-      background: "#fce8c3",
+      background: "#FFE4E1",
       rating: "4",
       previousPrize: "₹85",
       prize: "₹80",
@@ -43,7 +43,7 @@ const SpecialItems = () => {
       id: "4",
       image: scoop,
       flavor: "Scoop",
-      background: "#fce8c3",
+      background: "#D2B48C",
       rating: "4",
       previousPrize: "₹85",
       prize: "₹80",
@@ -62,7 +62,7 @@ const SpecialItems = () => {
       id: "6",
       image: cone,
       flavor: "Cone",
-      background: "#fce8c3",
+      background: "#E6E6FA",
       rating: "4",
       previousPrize: "₹85",
       prize: "₹80",
@@ -71,15 +71,11 @@ const SpecialItems = () => {
   return (
     <>
       <div className="special-box">
-        <div>
+       
           <div>
             <h1>Our Special</h1>
           </div>
-          <div style={{ display: "flex", gap: "20px", fontSize: "24px" }}>
-            <LeftOutlined />
-            <RightOutlined />
-          </div>
-        </div>
+       
         <div className="special-item">
           {specialIcecream.map((currElem) => {
             return (
@@ -111,7 +107,8 @@ const SpecialItems = () => {
                 </div>
               </div>
             </div>
-           <Button value="Add to Card"/>
+           <Button value="Buy Now
+           "/>
           </div>
        
       );

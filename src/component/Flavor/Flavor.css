@@ -190,3 +190,35 @@
     padding: 0.8rem;
   }
 }
+
+
+.Pagination-control {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  font-size: larger;
+  margin: 20px 0;
+}
+
+/* Media query for small screens (mobile devices) */
+@media (max-width: 600px) {
+  .Pagination-control {
+    flex-direction: column;
+    gap: 10px;
+    font-size: medium;
+  }
+
+  .Pagination-control button {
+    width: 100%;
+    max-width: 200px;
+  }
+
+  .Pagination-control span {
+    text-align: center;
+  }
+}
+.arrow{
+  background-color: rgb(224, 221, 221);
+  color: black;
+}
