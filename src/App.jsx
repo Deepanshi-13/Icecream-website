@@ -1,6 +1,7 @@
 import React from 'react';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import Approute from './routes/Approute';
+import "./App.css";
 
 
 

@@ -44,6 +44,7 @@ const Navbar = () => {
 
       <div className="navbar-cart">
         <ShoppingCartOutlined className="cart-icon" />
+        <span className="cart-number">0</span>
       </div>
     </nav>
   );

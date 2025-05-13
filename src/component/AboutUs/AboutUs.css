@@ -1,9 +1,11 @@
 .about-page {
-    background-color: #fff0f5;
-    padding: 40px;
-    font-family: Arial, sans-serif;
-    min-height: 100vh;
-  }
+  background-color: #fff0f5;
+  padding: 20px 40px 40px 40px; /* Reduce top padding */
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  margin-top: 0;
+}
+
   
   /* Hero Section */
   .about-hero {

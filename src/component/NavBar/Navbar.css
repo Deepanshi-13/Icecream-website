@@ -78,6 +78,32 @@ body{
   font-size: 24px;
 }
 
+.navbar-cart {
+  position: relative;
+  display: inline-block;
+}
+
+.cart-icon {
+  font-size: 24px;
+  color: #333;
+}
+
+/* Badge Style */
+.cart-number {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background-color: red;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 50%;
+  line-height: 1;
+  min-width: 18px;
+  text-align: center;
+}
+
 /* Responsive Style */
 @media screen and (max-width: 998px) {
   .navbar {
