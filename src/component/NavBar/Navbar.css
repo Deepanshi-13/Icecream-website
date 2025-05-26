@@ -93,7 +93,7 @@ body{
   position: absolute;
   top: -8px;
   right: -10px;
-  background-color: red;
+  background-color:#ff5e9c ;
   color: white;
   font-size: 12px;
   font-weight: bold;
@@ -141,5 +141,74 @@ body{
   .navbar-cart {
     align-self: flex-end;
     margin-top: 10px;
+  }
+}
+.Card_details {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24rem;
+  font-size: small;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+
+.Card_details i {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 23px;
+  color: #999;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.Card_details i:hover {
+  color:#ff5e9c ;
+}
+
+.Card_details p {
+  font-size: 15px;
+  color: #333;
+  text-align: center;
+}
+
+.Card_details img {
+  width: 8rem;
+  height: 8rem;
+  padding: 8;
+  margin-left: 3rem;
+
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .Card_details {
+    padding: 16px;
+  }
+
+  .Card_details p {
+    font-size: 16px;
+  }
+
+  .Card_details i {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .Card_details {
+    padding: 12px;
+    border-radius: 12px;
+  }
+
+  .Card_details p {
+    font-size: 14px;
+  }
+
+  .Card_details i {
+    font-size: 14px;
+    top: 10px;
+    right: 10px;
   }
 }

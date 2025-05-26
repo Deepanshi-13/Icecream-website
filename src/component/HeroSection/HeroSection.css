@@ -84,8 +84,8 @@ body {
 .shopnow-div .more-flavor{
   color: black;
   background: none;
-  border: 2px solii;
   border: 1px solid;
+  padding: 10px;
   font-family: 'Poppins', sans-serif;
 }
 

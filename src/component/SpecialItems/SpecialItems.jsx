@@ -1,15 +1,19 @@
-import React from "react";
 import "./SpecialItems.css";
 import falooda from "../../assets/falooda.png";
 import matkaKulfi from "../../assets/matkaKulfi.png";
 import icecreamRoll from "../../assets/icecreamRoll.png";
 import scoop from "../../assets/scoop.png";
-import tuttiFrutti from "../../assets/tuttiFruti.png"
+import tuttiFrutti from "../../assets/tuttiFruti.png";
 import cone from "../../assets/cone.png";
 import Button from "../Button/Button";
-
+import { useDispatch } from "react-redux";
+import { ADD } from "../../Redux/actions/action";
 
 const SpecialItems = () => {
+  const dispatch = useDispatch();
+  const send = (e) => {
+    dispatch(ADD(e));
+  };
   const specialIcecream = [
     {
       id: "1",
@@ -48,7 +52,7 @@ const SpecialItems = () => {
       previousPrize: "₹85",
       prize: "₹80",
     },
-    
+
     {
       id: "5",
       image: tuttiFrutti,
@@ -71,47 +75,47 @@ const SpecialItems = () => {
   return (
     <>
       <div className="special-box">
-       
-          <div>
-            <h1>Our Special</h1>
-          </div>
-       
+        <div>
+          <h1>Our Special</h1>
+        </div>
+
         <div className="special-item">
           {specialIcecream.map((currElem) => {
             return (
-          
-          <div className="cards " key={currElem.id}>
-            <div
-              className="special-image"
-              style={{ backgroundColor: currElem.background }}
-            >
-              <img src={currElem.image}  alt="special-image"/>
-            </div>
-            <div className="special-content">
-              <div className="special-rating">
-                <p> Rating:{currElem.rating}</p>
-              </div>
-              <div className="special-name">
-                <h4>{currElem.flavor} Icecream</h4>
-              </div>
-              <div className="special-prize">
-                <div className="previous-prize">
-                  <p>{currElem.previousPrize}</p>
+              <div className="cards " key={currElem.id}>
+                <div
+                  className="special-image"
+                  style={{ backgroundColor: currElem.background }}
+                >
+                  <img src={currElem.image} alt="special-image" />
                 </div>
-                <div className="prize">
-                  <b>
-                    <p style={{ color: "rgb(219, 71, 120)" }}>
-                      {currElem.prize}
-                    </p>
-                  </b>
+                <div className="special-content">
+                  <div className="special-rating">
+                    <p> Rating:{currElem.rating}</p>
+                  </div>
+                  <div className="special-name">
+                    <h4>{currElem.flavor} Icecream</h4>
+                  </div>
+                  <div className="special-prize">
+                    <div className="previous-prize">
+                      <p>{currElem.previousPrize}</p>
+                    </div>
+                    <div className="prize">
+                      <b>
+                        <p style={{ color: "rgb(219, 71, 120)" }}>
+                          {currElem.prize}
+                        </p>
+                      </b>
+                    </div>
+                  </div>
                 </div>
+                <Button
+                  value="Buy Now
+           "
+                  onClick={() => send(currElem)}
+                />
               </div>
-            </div>
-           <Button value="Buy Now
-           "/>
-          </div>
-       
-      );
+            );
           })}
         </div>
       </div>

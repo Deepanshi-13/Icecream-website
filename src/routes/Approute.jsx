@@ -5,6 +5,7 @@ import Shop from "../Pages/Shop";
 import About from "../Pages/About";
 import Contact from "../Pages/Contact";
 import AppLayout from "../Layout/AppLayout";
+import FlavorDetails from "../component/Flavor/FlavorDetails";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
       {
         path: "shop",
         element: <Shop />,
+      },
+      {
+        path:"flavorDetails",
+        element:<FlavorDetails/>
       },
       {
         path: "about",
