@@ -4,12 +4,11 @@ import { ShoppingCartOutlined } from "@ant-design/icons";
 import icecream from "../../assets/ice-cream.png";
 import shoppingCart from "../../assets/shoppingCart.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faTrash } from "@fortawesome/free-solid-svg-icons";
 import Menu from "@mui/material/Menu";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Table } from "@mui/material";
-import { WidthFull } from "@mui/icons-material";
 
 const Navbar = () => {
   const getData = useSelector((state) => state.cartreducer.carts);
@@ -71,6 +70,7 @@ const Navbar = () => {
         />
         <span className="cart-number">{getData.length}</span>
       </div>
+
       <Menu
         id="basic-menu"
         anchorEl={anchorEl}
@@ -78,34 +78,46 @@ const Navbar = () => {
         onClose={handleClose}
       >
         {getData.length ? (
-          <div className="Card_details" style={{width:"24rem",padding:"10"}}>
+          <div
+            className="Card_details"
+            style={{ width: "24rem", padding: "10" }}
+          >
             <Table>
               <thead>
                 <tr>
                   <th>Photo</th>
                   <th>Icecream Shop Name</th>
+                  <th>Remove</th>
                 </tr>
               </thead>
               <tbody>
-                {
-                  getData.map((e)=>{
-                    return(
-                      <>
-                        <tr>
-                          <td>
-                            <img src={e.image} />
-                          </td>
-                          <td>
-                            <p style={{margin:"9px"}}>{e.flavor}</p>
-                            <p style={{margin:"9px"}}>Price:{e.prize}₹</p>
-                            <p style={{margin:"9px"}}>Quantity:0</p>
-                          </td>
-                         <hr/>
-                        </tr>
-                      </>
-                    )
-                  })
-                }
+                {getData.map((e) => (
+                  <tr
+                    key={e.id}
+                    style={{
+                      boxShadow: "0px 4px 8px rgba(72, 70, 70, 0.2)",
+                    }}
+                  >
+                    <td>
+                      <img src={e.image} style={{ width: "50px" }} />
+                    </td>
+                    <td>
+                      <p style={{ margin: "9px" }}>{e.flavor}</p>
+                      <p style={{ margin: "9px" }}>Price: {e.prize} ₹</p>
+                      <p style={{ margin: "9px" }}>Quantity:</p>
+                    </td>
+                    <td style={{ textAlign: "center", verticalAlign: "middle" }}>
+                      <FontAwesomeIcon
+                        icon={faTrash}
+                        style={{
+                          color: "hotpink",
+                          fontSize: 20,
+                          cursor: "pointer",
+                        }}
+                      />
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </Table>
           </div>

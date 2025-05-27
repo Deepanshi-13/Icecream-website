@@ -174,8 +174,8 @@ body{
 }
 
 .Card_details img {
-  width: 8rem;
-  height: 8rem;
+  width: 10rem;
+  height: 5rem;
   padding: 8;
   margin-left: 3rem;
 
@@ -210,5 +210,15 @@ body{
     font-size: 14px;
     top: 10px;
     right: 10px;
+  }
+}
+/* Navbar.css */
+.trash-icon-sm {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .trash-icon-sm {
+    display: inline-block;
   }
 }

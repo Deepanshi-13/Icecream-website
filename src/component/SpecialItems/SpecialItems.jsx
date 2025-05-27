@@ -109,11 +109,7 @@ const SpecialItems = () => {
                     </div>
                   </div>
                 </div>
-                <Button
-                  value="Buy Now
-           "
-                  onClick={() => send(currElem)}
-                />
+                <Button value="Buy Now" onClick={() => send(currElem)} />
               </div>
             );
           })}
