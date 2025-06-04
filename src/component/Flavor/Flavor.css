@@ -1,225 +1,251 @@
-
-.seller-box {
-  display: flex;
-  margin-top: 3rem;
-  padding-top: 0;
-  justify-content: space-around;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 1rem;
-  padding: 6rem 4rem 2rem 4rem;
+/* Modern Flavor Component CSS */
+.flavor-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: 'Poppins', sans-serif;
 }
 
-.seller-text h2 {
-  font-size: 2rem;
+.flavor-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.flavor-header h1 {
+  font-size: 2.5rem;
   color: #333;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  background: rgb(219, 71, 120);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.seller-button {
+.category-buttons {
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  flex-wrap: nowrap;
-  gap: 16px;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
-.seller-button button {
-  padding: 0.6rem 1.4rem;
+.category-btn {
+  padding: 0.75rem 1.5rem;
   border: none;
-  border-radius: 8px;
-  background-color: #f11273;
-  color: white;
-  font-weight: bold;
+  border-radius: 30px;
+  background-color: #f0f0f0;
+  color: #666;
+  font-weight: 600;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-/* Flavor Section */
-.flavor-box {
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  align-items: center;
-  text-align: center;
-  flex-wrap: wrap;
+.category-btn.active {
+  background: linear-gradient(135deg, #FF6B6B, #FF8E8E);
+  color: white;
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+}
+
+.category-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.flavor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   gap: 2rem;
-  padding: 2rem 4rem; 
-  margin-top: 0; 
+  margin-bottom: 3rem;
 }
 
-.card {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  flex-wrap: wrap;
-  padding: 20px;
-  background-color: #fff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.flavor-image {
-  width: 300px;
-  height: 300px;
-  border-radius: 15px;
+.flavor-card {
+  display: block !important;
+  background: white;
+  border-radius: 16px;
   overflow: hidden;
-  margin-bottom: 1rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
 }
 
-.flavor-image img {
+.flavor-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+}
+
+.card-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background:rgb(219, 71, 120);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  z-index: 1;
+}
+
+.card-image {
+  width: 100%;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.card-image img {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
+  transition: transform 0.3s ease;
 }
 
-.flavor-content h4 {
-  font-size: 1.2rem;
-  margin: 0.5rem 0;
+.flavor-card:hover .card-image img {
+  transform: scale(1.05);
 }
 
-.flavor-rating p {
-  margin: 0.2rem 0;
-  font-weight: 500;
+.card-content {
+  padding: 1.5rem;
+  text-align: center;
 }
 
-.flavor-prize {
+.rating {
   display: flex;
-  flex-direction: row;
+  justify-content: center;
   align-items: center;
-  gap: 2.5rem;
-  padding-left: 45px;
+  gap: 0.25rem;
+  margin-bottom: 0.75rem;
 }
 
-.previous-prize {
+.star {
+  color: #FFD166;
+  font-size: 1rem;
+}
+
+.rating span {
+  margin-left: 0.5rem;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.card-content h3 {
+  font-size: 1.25rem;
+  color: #333;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.price-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.original-price {
   text-decoration: line-through;
-  color: #888;
+  color: #999;
+  font-size: 0.9rem;
 }
 
-.prize p {
-  color: #db4778;
-  font-weight: bold;
-  margin: 0;
+.current-price {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: rgb(219, 71, 120);
+}
+
+.buy-now-btn {
+  width: 100%;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 8px;
+  background: rgb(219, 71, 120);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.buy-now-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.pagination-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: #f0f0f0;
+  color: #666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pagination-btn:hover:not(:disabled) {
+  background: rgb(219, 71, 120);
+  color: white;
+}
+
+.pagination-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.page-indicator {
+  font-size: 1rem;
+  color: #666;
 }
 
 /* Responsive Design */
 @media (max-width: 1024px) {
-  .seller-box {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 4rem 2rem;
-  }
-
-  .seller-text h2 {
-    font-size: 1.8rem;
-  }
-
-  .seller-button {
-    justify-content: flex-start;
-    flex-wrap: wrap;
-  }
-
-  .flavor-box {
-    padding: 2rem;
+  .flavor-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   }
 }
 
 @media (max-width: 768px) {
-  .seller-box {
-    padding: 2rem;
-    gap: 1.5rem;
+  .flavor-header h1 {
+    font-size: 2rem;
   }
-
-  .flavor-box {
-    gap: 1rem;
-    padding: 1.5rem;
+  
+  .category-buttons {
+    gap: 0.75rem;
   }
-
-  .card {
-    width: 100%;
-  }
-
-  .flavor-image {
-    width: 100%;
-    height: auto;
+  
+  .category-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
   }
 }
 
 @media (max-width: 576px) {
-  .seller-text h2 {
-    font-size: 1.5rem;
-    text-align: center;
+  .flavor-container {
+    padding: 1.5rem;
   }
-
-  .seller-button {
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
+  
+  .flavor-header h1 {
+    font-size: 1.75rem;
   }
-
-  .seller-button button {
-    width: 100%;
-    text-align: center;
+  
+  .flavor-grid {
+    grid-template-columns: 1fr;
   }
-
-  .card {
-    padding: 1rem;
+  
+  .card-image {
+    height: 200px;
   }
-
-  .flavor-prize {
-    flex-direction: column;
-    align-items: flex-start;
-    padding-left: 0;
-  }
-}
-
-@media (max-width: 375px) {
-  .seller-text h2 {
-    font-size: 1.3rem;
-  }
-
-  .flavor-content h4 {
-    font-size: 1rem;
-  }
-
-  .flavor-image {
-    width: 100%;
-    height: auto;
-  }
-
-  .card {
-    padding: 0.8rem;
-  }
-}
-
-
-.Pagination-control {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  font-size: larger;
-  margin: 20px 0;
-}
-
-/* Media query for small screens (mobile devices) */
-@media (max-width: 600px) {
-  .Pagination-control {
-    flex-direction: column;
-    gap: 10px;
-    font-size: medium;
-  }
-
-  .Pagination-control button {
-    width: 100%;
-    max-width: 200px;
-  }
-
-  .Pagination-control span {
-    text-align: center;
-  }
-}
-.arrow{
-  background-color: rgb(224, 221, 221);
-  color: black;
 }

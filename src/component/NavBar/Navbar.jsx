@@ -6,13 +6,29 @@ import shoppingCart from "../../assets/shoppingCart.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTrash } from "@fortawesome/free-solid-svg-icons";
 import Menu from "@mui/material/Menu";
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { Link, NavLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { Table } from "@mui/material";
+import { REMOVE } from "../../Redux/actions/action";
+import { DECREMENT } from "../../Redux/actions/action";
+import { INCREMENT } from "../../Redux/actions/action";
 
 const Navbar = () => {
-  const getData = useSelector((state) => state.cartreducer.carts);
+  const [searchQuery, setSearchQuery] = useState("");
+  console.log(searchQuery);
+  const getData = useSelector((state) => state.cart.carts);
   console.log(getData);
+  const dispatch = useDispatch();
+  const remove = (e) => {
+    dispatch(REMOVE(e));
+  };
+  const decrement = (e) => {
+    dispatch(DECREMENT(e));
+  };
+  const increment = (e) => {
+    dispatch(INCREMENT(e));
+  };
+
   const [showMenu, setShowMenu] = useState(false);
   const handleButtonToggle = () => {
     setShowMenu(!showMenu);
@@ -26,6 +42,16 @@ const Navbar = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const calculateTotal = () => {
+    return getData
+      .reduce((Total, item) => {
+        return Total + Number(item.price * item.quantity);
+      }, 0)
+      .toFixed(2);
+  };
+
+  console.log("Total Price:", calculateTotal());
 
   return (
     <nav className="navbar">
@@ -51,7 +77,12 @@ const Navbar = () => {
         </li>
       </div>
 
-      <input type="text" placeholder="Search" />
+      <input
+        type="text"
+        placeholder="Search"
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+      />
 
       <div className="ham-menu">
         <label className="toggle-btn" onClick={handleButtonToggle}>
@@ -99,25 +130,71 @@ const Navbar = () => {
                     }}
                   >
                     <td>
-                      <img src={e.image} style={{ width: "50px" }} />
+                      <NavLink
+                        to={`/flavorDetails/${e.id}`}
+                        onClick={handleClose}
+                      >
+                        <img src={e.image} alt="icecream" />
+                      </NavLink>
                     </td>
-                    <td>
-                      <p style={{ margin: "9px" }}>{e.flavor}</p>
-                      <p style={{ margin: "9px" }}>Price: {e.prize} ₹</p>
-                      <p style={{ margin: "9px" }}>Quantity:</p>
+                    <td
+                      style={{
+                        alignItems: "baseline",
+                        display: "flex",
+                        flex: "start",
+                        flexDirection: "column",
+                      }}
+                    >
+                      <p style={{ margin: "9px" }}>
+                        <b>Flavor</b>
+                        {e.flavor}
+                      </p>
+                      <p style={{ margin: "9px" }}>
+                        <b>Price:</b>
+                        {e.price}
+                      </p>
+                      <p style={{ margin: "9px" }}>
+                        <b>Quantity:</b>
+                        <button
+                          className="decrementBtn"
+                          onClick={() => {
+                            decrement(e);
+                          }}
+                        >
+                          -
+                        </button>
+                        <span>{e.quantity}</span>
+                        <button
+                          className="incrementBtn"
+                          onClick={() => {
+                            increment(e);
+                          }}
+                        >
+                          +
+                        </button>
+                      </p>
                     </td>
-                    <td style={{ textAlign: "center", verticalAlign: "middle" }}>
+                    <td
+                      style={{ textAlign: "center", verticalAlign: "middle" }}
+                    >
                       <FontAwesomeIcon
                         icon={faTrash}
                         style={{
                           color: "hotpink",
                           fontSize: 20,
                           cursor: "pointer",
+                          padding: "6px 12px",
+                        }}
+                        onClick={() => {
+                          remove(e);
                         }}
                       />
                     </td>
                   </tr>
                 ))}
+                <p>
+                  <b>Total</b>: ₹{calculateTotal()}
+                </p>
               </tbody>
             </Table>
           </div>

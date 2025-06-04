@@ -1,136 +1,156 @@
 import React, { useEffect, useState } from "react";
 import "./Flavor.css";
 import Button from "../Button/Button";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { FaArrowLeft, FaArrowRight, FaStar, FaRegStar } from "react-icons/fa";
 import flavorData from "../Flavor/FlavorData";
 import { useDispatch } from "react-redux";
 import { ADD } from "../../Redux/actions/action";
-const Flavor = () => {
+
+const Flavor = ({searchQuery}) => {
   const dispatch = useDispatch();
+  const [currentPage, setCurrentPage] = useState(1);
+  const [filterItems, setFilterItems] = useState([]);
+  const [category, setCategory] = useState("");
+  const ItemsPerPage = 6;
 
   const send = (e) => {
     dispatch(ADD(e));
   };
 
-  const [currentPage, setCurrentPage] = useState(1);
-  // console.log(currentPage);
-  const [filterItems, setFilterItems] = useState([]);
-
-  const [category, setCategory] = useState("");
-  // console.log(category)
-  const ItemsPerPage = 6;
   const startIndex = (currentPage - 1) * ItemsPerPage;
   const selectedItems = filterItems.slice(
     startIndex,
     startIndex + ItemsPerPage
   );
+  const totalPages = Math.ceil(filterItems.length / ItemsPerPage);
 
   useEffect(() => {
+    let filtered = flavorData;
     if (category === "") {
       setFilterItems(flavorData);
     } else {
-      const filteredFlavors = flavorData.filter(
+      filtered = flavorData.filter(
         (item) => item.type === category
       );
-      setFilterItems(filteredFlavors);
     }
+    if(searchQuery){
+      filtered = filtered.filter((item)=>
+        item.flavor.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    }
+    setFilterItems(filtered);
     setCurrentPage(1);
-  }, [category]);
+  }, [category,searchQuery]);;
 
-  //This calculates how many pages you’ll need to display all the items, based on how many you show per page.
-
-  //Math.ceil() rounds a number up to the nearest whole number.
-
-  const totalPages = Math.ceil(filterItems.length / ItemsPerPage);
-  console.log(filterItems);
-
-  // Slice data for current page
-
-  //Here:  math.max(prev-1,1) ensures the page doesn't go below 1 (the first page).
-  // Math.min(prev+1,totalPages) makes sure it doesn't go beyond the last page.
-  // prev is the current page number before the update.
-  const PreviousPage = () => {
-    setCurrentPage((prev) => Math.max(prev - 1, 1));
-  };
-
-  const NextPage = () => {
+  const PreviousPage = () => setCurrentPage((prev) => Math.max(prev - 1, 1));
+  const NextPage = () =>
     setCurrentPage((prev) => Math.min(prev + 1, totalPages));
+
+  const renderStars = (rating) => {
+    return Array(5)
+      .fill(0)
+      .map((_, i) =>
+        i < rating ? (
+          <FaStar key={i} className="star filled" />
+        ) : (
+          <FaRegStar key={i} className="star" />
+        )
+      );
   };
 
   return (
-    <>
-      <div className="seller-box">
-        <div className="seller-text">
-          <h1>Find your perfect pint!</h1>
+    <div className="flavor-container">
+      <div className="flavor-header">
+        <h1>Find Your Perfect Pint!</h1>
+        <div className="category-buttons">
+          <button
+            className={`category-btn ${
+              category === "topSeller" ? "active" : ""
+            }`}
+            onClick={() => setCategory("topSeller")}
+          >
+            Top Seller
+          </button>
+          <button
+            className={`category-btn ${
+              category === "topTrending" ? "active" : ""
+            }`}
+            onClick={() => setCategory("topTrending")}
+          >
+            Top Trending
+          </button>
+          <button
+            className={`category-btn ${
+              category === "topProducts" ? "active" : ""
+            }`}
+            onClick={() => setCategory("topProducts")}
+          >
+            New Products
+          </button>
         </div>
-        <div className="seller-button">
-          <div className="top-seller">
-            <Button
-              value="Top Seller"
-              onClick={() => setCategory("topSeller")}
-            />
-          </div>
-          <div className="top-trending">
-            <Button
-              value="Top Trending"
-              onClick={() => setCategory("topTrending")}
-            />
-          </div>
-          <div className="new-products">
-            <Button
-              value="New Products"
-              onClick={() => setCategory("topProducts")}
-            />
-          </div>
-        </div>
-      </div>
-      <div className="flavor-box">
-        {selectedItems.map((curr) => {
-          return (
-            <div className="card " key={curr.id}>
-              <div
-                className="flavor-image"
-                style={{ backgroundColor: curr.background }}
-              >
-                <img src={curr.image} alt="icecream-image" />
-              </div>
-              <div className="flavor-content">
-                <div className="flavor-rating">
-                  <p> Rating:{curr.rating}</p>
-                </div>
-                <div className="flavor-name">
-                  <h4>{curr.flavor} Icecream</h4>
-                </div>
-                <div className="flavor-prize">
-                  <div className="previous-prize">
-                    <p>{curr.previousPrize}</p>
-                  </div>
-                  <div className="prize">
-                    <b>
-                      <p style={{ color: "rgb(219, 71, 120)" }}>{curr.prize}</p>
-                    </b>
-                  </div>
-                </div>
-              </div>
-              <Button value="Buy Now" onClick={() => send(curr)} />
-            </div>
-          );
-        })}
       </div>
 
-      {/* Pagination control */}
-      <div className="Pagination-control">
-        <button onClick={PreviousPage} className="arrow">
+      <div className="flavor-grid">
+        {selectedItems.map((curr) => (
+          <div className="flavor-card" key={curr.id}>
+            <div className="card-badge">
+              {curr.type === "topSeller"
+                ? "BESTSELLER"
+                : curr.type === "topTrending"
+                ? "TRENDING"
+                : "NEW"}
+            </div>
+
+            <div className="card-header">
+              <div
+                className="card-image"
+                style={{ backgroundColor: curr.background }}
+              >
+                <img src={curr.image} alt={curr.flavor} />
+              </div>
+              <div className="card-content">
+                <div className="rating">
+                  {renderStars(curr.rating)}
+                  <span>({curr.rating})</span>
+                </div>
+                <h3>{curr.flavor} Ice Cream</h3>
+                <div className="price-container">
+                  {curr.previousPrice && (
+                    <span className="original-price">{curr.previousPrice}</span>
+                  )}
+                  <span className="current-price">₹{curr.price}</span>
+                </div>
+                <Button
+                  className="buy-now-btn"
+                  onClick={() => send(curr)}
+                  value="Add to Cart"
+                />
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="pagination">
+        <button
+          onClick={PreviousPage}
+          disabled={currentPage === 1}
+          className="pagination-btn"
+        >
           <FaArrowLeft />
         </button>
-        <span>
-          {currentPage}of{totalPages}
+        <span className="page-indicator">
+          Page {currentPage} of {totalPages}
         </span>
-        <button onClick={NextPage} className="arrow">
+        <button
+          onClick={NextPage}
+          disabled={currentPage === totalPages}
+          className="pagination-btn"
+        >
           <FaArrowRight />
         </button>
       </div>
-    </>
+    </div>
   );
 };
 

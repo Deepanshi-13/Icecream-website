@@ -18,10 +18,10 @@ const router = createBrowserRouter([
       },
       {
         path: "shop",
-        element: <Shop />,
+        element: <Shop  searchQuery={searchQuery}/>,
       },
       {
-        path:"flavorDetails",
+        path:"flavorDetails/:id",
         element:<FlavorDetails/>
       },
       {

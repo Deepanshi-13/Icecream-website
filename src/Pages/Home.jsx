@@ -2,23 +2,19 @@ import React from "react";
 import HeroSection from "../component/HeroSection/HeroSection.jsx";
 import Crafting from "../component/Crafting/Crafting.jsx";
 import Flavor from "../component/Flavor/Flavor.jsx";
-import AboutUs from "../component/AboutUs/AboutUs.jsx";
 import SpecialItems from "../component/SpecialItems/SpecialItems.jsx";
-import ContactUs from "../component/ContactUs/ContactUs.jsx";
-
-
+import About from "../Pages/About.jsx";
+import Contact from "./Contact.jsx";
 
 const Home = () => {
   return (
     <div>
       <HeroSection />
-      <Crafting/>
-      <Flavor/>
-      <SpecialItems/>
-      <AboutUs/>
-      <ContactUs/>
-      
-     
+      <Crafting />
+      <Flavor />
+      <SpecialItems />
+      <About />
+      <Contact />
     </div>
   );
 };

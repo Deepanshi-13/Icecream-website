@@ -1,89 +1,230 @@
-.falvorDetails-container {
-  padding: 20px;
-  /* border-radius: 10px; */
-  font-family: Arial, sans-serif;
-
-
+/* Modern Flavor Details CSS */
+.flavor-details-container {
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
-.falvorDetails-container h2 {
+.flavor-hero {
+  background: rgb(219, 71, 120);
+  color: white;
+  padding: 60px 0;
+  margin-bottom: 40px;
+  border-radius: 0 0 20px 20px;
+  box-shadow: 0 4px 20px rgba(255, 154, 158, 0.3);
+}
+
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
   text-align: center;
-  margin-bottom: 20px;
-  color: #a56279;
 }
 
-.flavorDetails-section .itemsDetails {
+.hero-content h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.flavor-content {
+  padding: 20px 0 60px;
+}
+
+.flavor-card {
   display: flex;
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  margin-bottom: 40px;
+}
+
+.flavor-image-container {
+  position: relative;
+  flex: 1;
+  min-height: 400px;
+}
+
+.flavor-image {
+  object-fit: cover;
+}
+
+.flavor-badge {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: rgb(219, 71, 120);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.flavor-info {
+  flex: 1;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.flavor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.flavor-header h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #333;
+  margin: 0;
+}
+
+.price-tag {
+  background: rgb(219, 71, 120);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.flavor-meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 20px;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+}
+
+.meta-label {
+  font-weight: 600;
+  margin-right: 8px;
+  color: #666;
+}
+
+.meta-value {
+  color: #333;
+}
+
+.rating-stars {
+  color: #FFD166;
+  margin-right: 8px;
+}
+
+.rating-stars .star {
+  margin-right: 2px;
+}
+
+.rating-stars .star.filled {
+  color: #FFD166;
+}
+
+.rating-value {
+  font-weight: 600;
+  color: #333;
+}
+
+.flavor-actions {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.add-to-cart-btn, .wishlist-btn {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 20px;
-  background-color: white;
-  box-shadow: 0 4px 8px rgba(32, 32, 32, 0.2);
+  gap: 8px;
 }
 
-.items_img img {
-  max-width: 300px;
-  width: 100%;
+.add-to-cart-btn {
+  background: #4ECDC4;
+  color: white;
 }
 
-.details table {
-  width: 100%;
-  border-collapse: collapse;
+.add-to-cart-btn:hover {
+  background: #3DBEB5;
+  transform: translateY(-2px);
 }
 
-.details td {
-  padding: 10px;
-  vertical-align: top;
+.wishlist-btn {
+  background: white;
+  color: #666;
+  border: 1px solid #ddd;
 }
 
-.details p {
-  margin: 20px 0;
+.wishlist-btn:hover {
+  background: #f5f5f5;
+  transform: translateY(-2px);
 }
 
-/* Medium devices (tablets, 768px and up) */
-@media screen and (max-width: 768px) {
-  .flavorDetails-section .itemsDetails {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .details table {
-    width: 100%;
-  }
-
-  .details td {
-    display: block;
-    /* padding: 5px 0; */
-  }
-}
-
-/* Small devices (phones, less than 480px) */
-@media screen and (max-width: 480px) {
-  .falvorDetails-container {
-    padding: 10px;
-  }
-
-  .items_img img {
-    max-width: 100%;
-  }
-
-  .details p {
-    font-size: 14px;
-  }
-}
-.rating {
-  font-size: 16px;
-  margin: 8px 0;
-}
-
-.rating .star {
-  padding: 7px;
-  background-color: rgb(205, 124, 179);
-  border-radius: 4px;
+.flavor-description h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
   color: #333;
-  margin-left: 4px;
 }
-.trash i{
-    color: rgb(205, 124, 179);
+
+.flavor-description p {
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .flavor-card {
+    flex-direction: column;
+  }
+  
+  .flavor-image-container {
+    min-height: 300px;
+  }
+  
+  .flavor-meta {
+    grid-template-columns: 1fr;
+  }
+  
+  .flavor-actions {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+  
+  .flavor-info {
+    padding: 20px;
+  }
+  
+  .flavor-header h2 {
+    font-size: 1.5rem;
+  }
 }

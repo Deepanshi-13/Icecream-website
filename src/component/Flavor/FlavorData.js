@@ -26,8 +26,8 @@ import kiwi from "../../assets/kiwi.png";
       flavor: "Strawberry",
       background: "#ffe4ec",
       rating: "4.1★",
-      previousPrize: "₹90",
-      prize: "₹ 80",
+      previousPrice: "₹90",
+      price: "80",
       type:"topSeller"
     },
     {
@@ -36,8 +36,8 @@ import kiwi from "../../assets/kiwi.png";
       flavor: "Vanilla",
       background: "#fff8e1",
       rating: "4.3★",
-      previousPrize: "₹70",
-      prize: "₹60",
+      previousPrice: "₹70",
+      price: "60",
       type:"topSeller"
     },
     {
@@ -46,8 +46,8 @@ import kiwi from "../../assets/kiwi.png";
       flavor: "Chocolate",
       background: "#f3e0d2",
       rating: "5★",
-      previousPrize: "₹90",
-      prize: "₹80",
+      previousPrice: "₹90",
+      price: "80",
       type:"topProducts",
     },
     {
@@ -56,8 +56,8 @@ import kiwi from "../../assets/kiwi.png";
       flavor: "Mango",
       background: "#fff3cd",
       rating: "5★",
-      previousPrize: "₹80",
-      prize: "₹75",
+      previousPrice: "₹80",
+      price: "75",
       type:"topProducts",
     },
     {
@@ -66,8 +66,8 @@ import kiwi from "../../assets/kiwi.png";
       flavor: "Blueberry",
       background: "#e8e6ff",
       rating: "4.4★",
-      previousPrize: "₹75",
-      prize: "₹70",
+      previousPrice: "₹75",
+      price: "70",
         type:"topSeller"
     },
     {
@@ -76,8 +76,8 @@ import kiwi from "../../assets/kiwi.png";
       flavor: "Butterscotch",
       background: "#fce8c3",
       rating: "3.9★",
-      previousPrize: "₹85",
-      prize: "₹80",
+      previousPrice: "₹85",
+      price: "80",
       type:"topTrending",
     },
     {
@@ -86,8 +86,8 @@ import kiwi from "../../assets/kiwi.png";
       flavor: "BlueMoon",
       background: "#fce8c3",
       rating: "4.3★",
-      previousPrize: "₹65",
-      prize: "₹60",
+      previousPrice: "₹65",
+      price: "60",
       type:"topProducts",
     },
     {
@@ -96,8 +96,8 @@ import kiwi from "../../assets/kiwi.png";
       flavor: "Pistachio",
       background: "#fce8c3",
       rating: "4.3★",
-      previousPrize: "₹90",
-      prize: "₹80",
+      previousPrice: "₹90",
+      price: "₹80",
       type:"topTrending",
     },
     {
@@ -106,8 +106,8 @@ import kiwi from "../../assets/kiwi.png";
       flavor: " Coffee",
       background: "#fce8c3",
       rating: "4.4★",
-      previousPrize: "₹70",
-      prize: "₹60",
+      previousPrice: "₹70",
+      price: "60",
       type:"topProducts",
     },
     {
@@ -116,8 +116,8 @@ import kiwi from "../../assets/kiwi.png";
       flavor: "Dark-Chocolate",
       background: "#fce8c3",
       rating: "5★",
-      previousPrize: "₹90",
-      prize: "₹70",
+      previousPrice: "₹90",
+      price: "70",
       type:"topTrending",
     },
     {
@@ -126,8 +126,8 @@ import kiwi from "../../assets/kiwi.png";
       flavor: "Butter-Pecan ",
       background: "#fce8c3",
       rating: "4.1★",
-      previousPrize: "₹50",
-      prize: "₹40",
+      previousPrice: "₹50",
+      price: "40",
       type:"topProducts",
     },
     {
@@ -136,8 +136,8 @@ import kiwi from "../../assets/kiwi.png";
       flavor: "Cookies ",
       background: "#fce8c3",
       rating: "4.5★",
-      previousPrize: "₹60",
-      prize: "₹50",
+      previousPrice: "₹60",
+      price: "50",
       type:"topProducts",
     },
     {
@@ -146,8 +146,8 @@ import kiwi from "../../assets/kiwi.png";
       flavor: "Mint-Chocolate",
       background: "#fce8c3",
       rating: "4.2★",
-      previousPrize: "₹80",
-      prize: "₹70",
+      previousPrice: "₹80",
+      price: "70",
       type:"topSeller"
     },
     
@@ -157,8 +157,8 @@ import kiwi from "../../assets/kiwi.png";
       flavor: "RockRoad",
       background: "#fce8c3",
       rating: "4.1★",
-      previousPrize: "₹75",
-      prize: "₹70",
+      previousPrice: "₹75",
+      price: "70",
       type:"topProducts",
     },
     {
@@ -167,8 +167,8 @@ import kiwi from "../../assets/kiwi.png";
       flavor: "Coconut",
       background: "#fce8c3",
       rating: "4.4★",
-      previousPrize: "₹65",
-      prize: "₹60",
+      previousPrice: "₹65",
+      price: "60",
       type:"topTrending",
     },
     {
@@ -177,8 +177,8 @@ import kiwi from "../../assets/kiwi.png";
       flavor: "Rose",
       background: "#fce8c3",
       rating: "4.5★",
-      previousPrize: "₹65",
-      prize: "₹60",
+      previousPrice: "₹65",
+      price: "60",
       type:"topSeller",
     },
     {
@@ -187,8 +187,8 @@ import kiwi from "../../assets/kiwi.png";
       flavor: "Pineapple",
       background: "#fce8c3",
       rating: "3.9★",
-      previousPrize: "₹50",
-      prize: "₹45",
+      previousPrice: "₹50",
+      price: "45",
       type:"topSeller"
     },
     {
@@ -197,8 +197,8 @@ import kiwi from "../../assets/kiwi.png";
       flavor: "ChocoChip ",
       background: "#fce8c3",
       rating: "4.3★",
-      previousPrize: "₹70",
-      prize: "₹65",
+      previousPrice: "₹70",
+      price: "65",
       type:"topTrending",
     },
     {
@@ -207,8 +207,8 @@ import kiwi from "../../assets/kiwi.png";
       flavor: "Oreo ",
       background: "#fce8c3",
       rating: "5★",
-      previousPrize: "₹75",
-      prize: "₹70",
+      previousPrice: "₹75",
+      price: "70",
       type:"topTrending",
     },
     {
@@ -217,8 +217,8 @@ import kiwi from "../../assets/kiwi.png";
       flavor: "Kiwi ",
       background: "#fce8c3",
       rating: "4★",
-      previousPrize: "₹60",
-      prize: "₹55",
+      previousPrice: "₹60",
+      price: "55",
       type:"topSeller",
     },
   ];

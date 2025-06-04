@@ -174,11 +174,31 @@ body{
 }
 
 .Card_details img {
-  width: 10rem;
   height: 5rem;
+  object-fit: cover;
   padding: 8;
   margin-left: 3rem;
 
+}
+
+
+/* Style for the quantity controls */
+.decrementBtn, .incrementBtn {
+  background: none;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 2px 8px;
+  cursor: pointer;
+  color: grey;
+}
+
+.decrementBtn:hover, .incrementBtn:hover {
+  background: #f5f5f5;
+}
+
+/* Adjust trash icon alignment */
+.Card_details .fa-trash {
+  margin-left: auto; /* Pushes trash icon to the right */
 }
 
 /* Media Queries */
