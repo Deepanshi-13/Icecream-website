@@ -1,3 +1,19 @@
+import {SET_FLAVORS} from "../actions/action";
+const INIT_FLAVORS = {
+  flavors: [],
+};
+export const flavorReducer = (state = INIT_FLAVORS, action) => {
+  switch (action.type) {
+    case SET_FLAVORS:
+      return {
+        ...state,
+        flavors: action.payload,
+      };
+    default:
+      return state;
+  }
+};
+
 const INIT_STATE = {
   carts: [],
 };

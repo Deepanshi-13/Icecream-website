@@ -22,3 +22,13 @@ export const INCREMENT = (item) => {
     payload: item,
   };
 };
+
+
+export const SET_FLAVORS = "SET_FLAVORS";
+
+export const setFlavors = (flavorData) => {
+  return {
+    type: SET_FLAVORS,
+    payload: flavorData,
+  };
+};

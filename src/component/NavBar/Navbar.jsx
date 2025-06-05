@@ -14,8 +14,6 @@ import { DECREMENT } from "../../Redux/actions/action";
 import { INCREMENT } from "../../Redux/actions/action";
 
 const Navbar = () => {
-  const [searchQuery, setSearchQuery] = useState("");
-  console.log(searchQuery);
   const getData = useSelector((state) => state.cart.carts);
   console.log(getData);
   const dispatch = useDispatch();
@@ -77,13 +75,7 @@ const Navbar = () => {
         </li>
       </div>
 
-      <input
-        type="text"
-        placeholder="Search"
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-      />
-
+      
       <div className="ham-menu">
         <label className="toggle-btn" onClick={handleButtonToggle}>
           <FontAwesomeIcon icon={faBars} />

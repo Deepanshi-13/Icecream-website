@@ -1,4 +1,5 @@
-import React from "react";
+// AppLayout.jsx
+import React, { useState } from "react";
 import Navbar from "../component/NavBar/Navbar";
 import { Outlet } from "react-router-dom";
 
@@ -7,10 +8,9 @@ const AppLayout = () => {
     <div>
       <main>
         <Navbar />
-        <Outlet />
 
+        <Outlet />
       </main>
-     
     </div>
   );
 };

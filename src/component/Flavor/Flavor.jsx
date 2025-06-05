@@ -2,16 +2,24 @@ import React, { useEffect, useState } from "react";
 import "./Flavor.css";
 import Button from "../Button/Button";
 import { FaArrowLeft, FaArrowRight, FaStar, FaRegStar } from "react-icons/fa";
+import { useSelector } from "react-redux";
 import flavorData from "../Flavor/FlavorData";
+import { setFlavors } from "../../Redux/actions/action";
 import { useDispatch } from "react-redux";
 import { ADD } from "../../Redux/actions/action";
 
-const Flavor = ({searchQuery}) => {
+const Flavor = ({ searchQuery }) => {
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
   const [filterItems, setFilterItems] = useState([]);
   const [category, setCategory] = useState("");
   const ItemsPerPage = 6;
+
+  const allFlavors = useSelector((state) => state.flavor.flavors);
+  console.log("All Flavors:", allFlavors);
+  useEffect(()=>{
+    dispatch(setFlavors(flavorData));
+  },[dispatch]);
 
   const send = (e) => {
     dispatch(ADD(e));
@@ -26,21 +34,19 @@ const Flavor = ({searchQuery}) => {
 
   useEffect(() => {
     let filtered = flavorData;
-    if (category === "") {
-      setFilterItems(flavorData);
-    } else {
-      filtered = flavorData.filter(
-        (item) => item.type === category
+    if (searchQuery) {
+      filtered = filtered.filter((item) =>
+        item.flavor.toLowerCase().includes(searchQuery.toLowerCase())
       );
     }
-    if(searchQuery){
-      filtered = filtered.filter((item)=>
-        item.flavor.toLowerCase().includes(searchQuery.toLowerCase())
-    );
+
+    if (category !== "") {
+      filtered = filtered.filter((item) => item.type === category);
     }
+
     setFilterItems(filtered);
     setCurrentPage(1);
-  }, [category,searchQuery]);;
+  }, [category, searchQuery]);
 
   const PreviousPage = () => setCurrentPage((prev) => Math.max(prev - 1, 1));
   const NextPage = () =>

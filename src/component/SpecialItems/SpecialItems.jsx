@@ -103,7 +103,7 @@ const SpecialItems = () => {
                 {renderStars(item.rating)}
                 <span>({item.rating})</span>
               </div>
-              <h3>{item.flavor} Ice Cream</h3>
+              <h3>{item.flavor} </h3>
               <div className="price-container">
                 <span className="original-price">{item.previousprice}</span>
                 <span className="current-price">{item.price}</span>
