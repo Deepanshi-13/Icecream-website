@@ -50,7 +50,7 @@ body{
 .navbar-links {
   list-style: none;
   display: flex;
-  gap: 50px;
+  gap: 6rem;
   margin: 0;
   padding: 0;
 }
@@ -143,102 +143,172 @@ body{
     margin-top: 10px;
   }
 }
+/* Cart Menu Container */
 .Card_details {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 24rem;
-  font-size: small;
+  width: 380px;
+  max-width: 95vw;
+  padding: 20px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
-.Card_details i {
-  position: absolute;
-  top: 0;
-  right: 0;
-  font-size: 23px;
-  color: #999;
-  cursor: pointer;
-  transition: color 0.3s ease;
+/* Cart Items Table */
+.Card_details table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 16px;
 }
 
-.Card_details i:hover {
-  color:#ff5e9c ;
-}
-
-.Card_details p {
-  font-size: 15px;
+.Card_details th {
+  text-align: left;
+  padding: 12px 8px;
+  border-bottom: 2px solid #ff5e9c;
   color: #333;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.Card_details td {
+  padding: 16px 8px;
+  vertical-align: middle;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+/* Product Image */
+.Card_details img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.2s ease;
+}
+
+.Card_details img:hover {
+  transform: scale(1.05);
+}
+
+/* Product Info */
+.Card_details p {
+  margin: 6px 0;
+  font-size: 14px;
+  color: #333;
+}
+
+.Card_details p b {
+  color: #555;
+  font-weight: 500;
+}
+
+/* Quantity Controls */
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.quantity-controls button {
+  width: 24px;
+  height: 24px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.quantity-controls button:hover {
+  background-color: #f8f8f8;
+  border-color: #ff5e9c;
+  color: #ff5e9c;
+}
+
+.quantity-controls span {
+  min-width: 20px;
   text-align: center;
 }
 
-.Card_details img {
-  height: 5rem;
-  object-fit: cover;
-  padding: 8;
-  margin-left: 3rem;
-
-}
-
-
-/* Style for the quantity controls */
-.decrementBtn, .incrementBtn {
-  background: none;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 2px 8px;
-  cursor: pointer;
-  color: grey;
-}
-
-.decrementBtn:hover, .incrementBtn:hover {
-  background: #f5f5f5;
-}
-
-/* Adjust trash icon alignment */
+/* Remove Button */
 .Card_details .fa-trash {
-  margin-left: auto; /* Pushes trash icon to the right */
+  color: #ff5e9c;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-/* Media Queries */
-@media (max-width: 768px) {
+.Card_details .fa-trash:hover {
+  transform: scale(1.2);
+  color: #ff2d62;
+}
+
+/* Total Price */
+.Card_details > p:last-child {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #eee;
+  font-weight: 600;
+  font-size: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Empty Cart State */
+.Card_details .smallclose {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 18px;
+  color: #999;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.Card_details .smallclose:hover {
+  color: #ff5e9c;
+  transform: rotate(90deg);
+}
+
+.Card_details > p {
+  text-align: center;
+  margin: 16px 0;
+  font-size: 15px;
+  color: #555;
+}
+
+.Card_details > img {
+  width: 120px;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+  opacity: 0.7;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 480px) {
   .Card_details {
     padding: 16px;
   }
-
-  .Card_details p {
-    font-size: 16px;
+  
+  .Card_details th {
+    font-size: 13px;
+    padding: 8px 4px;
   }
-
-  .Card_details i {
-    font-size: 16px;
+  
+  .Card_details td {
+    padding: 12px 4px;
   }
-}
-
-@media (max-width: 480px) {
-  .Card_details {
-    padding: 12px;
-    border-radius: 12px;
+  
+  .Card_details img {
+    width: 50px;
+    height: 50px;
   }
-
-  .Card_details p {
-    font-size: 14px;
-  }
-
-  .Card_details i {
-    font-size: 14px;
-    top: 10px;
-    right: 10px;
-  }
-}
-/* Navbar.css */
-.trash-icon-sm {
-  display: none;
-}
-
-@media (max-width: 768px) {
-  .trash-icon-sm {
-    display: inline-block;
+  
+  .quantity-controls button {
+    width: 22px;
+    height: 22px;
   }
 }

@@ -5,7 +5,7 @@ import Flavor from "../component/Flavor/Flavor.jsx";
 import SpecialItems from "../component/SpecialItems/SpecialItems.jsx";
 import About from "../Pages/About.jsx";
 import Contact from "./Contact.jsx";
-import Login from "../component/Login/Login.jsx";
+
 
 const Home = () => {
   return (
@@ -16,7 +16,7 @@ const Home = () => {
       <SpecialItems />
       <About />
       <Contact />
-      <Login/>
+    
      
       
     </div>
