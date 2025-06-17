@@ -92,6 +92,8 @@ const Navbar = () => {
             backgroundColor: "#87d068",
             cursor: "pointer",
             marginLeft: "20px",
+            fontSize:"32px",
+            padding:"1.3rem"
           }}
         >
           {username ? username[0].toUpperCase() : <UserOutlined />}

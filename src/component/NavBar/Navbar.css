@@ -60,7 +60,7 @@ body{
   color: #333;
   font-weight: 500;
   transition: all 0.3s ease;
-  font-size: 1rem;
+  font-size: 1.3rem;
 }
 
 .navbar-links li a:hover,
@@ -81,10 +81,11 @@ body{
 .navbar-cart {
   position: relative;
   display: inline-block;
+ 
 }
 
 .cart-icon {
-  font-size: 24px;
+  font-size: 35px;
   color: #333;
 }
 
