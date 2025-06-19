@@ -6,7 +6,6 @@ import SpecialItems from "../component/SpecialItems/SpecialItems.jsx";
 import About from "../Pages/About.jsx";
 import Contact from "./Contact.jsx";
 
-
 const Home = () => {
   return (
     <div>
@@ -16,7 +15,7 @@ const Home = () => {
       <SpecialItems />
       <About />
       <Contact />
-    
+   
      
       
     </div>

@@ -6,9 +6,10 @@ import About from "../Pages/About";
 import Contact from "../Pages/Contact";
 import AppLayout from "../Layout/AppLayout";
 import FlavorDetails from "../component/Flavor/FlavorDetails";
-import Login from "../component/Login/Login";
+import AuthPage from "../Pages/AuthPage";
 
 const PrivateRoute = () => {
+  
   const isAuth = localStorage.getItem("token");
   return isAuth ? <Outlet /> : <Navigate to="/login" />;
 };
@@ -18,7 +19,7 @@ const AppRoute = () => {
     <Router>
       <Routes>
         {/* Login shown first */}
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<AuthPage />} />
 
         {/* Protected Routes */}
         <Route path="/" element={<PrivateRoute />}>
