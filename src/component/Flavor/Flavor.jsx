@@ -2,10 +2,9 @@ import React, { useEffect, useState } from "react";
 import "./Flavor.css";
 import Button from "../Button/Button";
 import { FaArrowLeft, FaArrowRight, FaStar, FaRegStar } from "react-icons/fa";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import flavorData from "../Flavor/FlavorData";
 import { setFlavors } from "../../Redux/actions/action";
-import { useDispatch } from "react-redux";
 import { ADD } from "../../Redux/actions/action";
 
 const Flavor = ({ searchQuery }) => {
@@ -17,12 +16,13 @@ const Flavor = ({ searchQuery }) => {
 
   const allFlavors = useSelector((state) => state.flavor.flavors);
   console.log("All Flavors:", allFlavors);
-  useEffect(()=>{
-    dispatch(setFlavors(flavorData));
-  },[dispatch]);
 
-  const send = (e) => {
-    dispatch(ADD(e));
+  useEffect(() => {
+    dispatch(setFlavors(flavorData));
+  }, [dispatch]);
+
+  const send = (item) => {
+    dispatch(ADD(item));
   };
 
   const startIndex = (currentPage - 1) * ItemsPerPage;
@@ -34,6 +34,7 @@ const Flavor = ({ searchQuery }) => {
 
   useEffect(() => {
     let filtered = flavorData;
+
     if (searchQuery) {
       filtered = filtered.filter((item) =>
         item.flavor.toLowerCase().includes(searchQuery.toLowerCase())
@@ -69,6 +70,12 @@ const Flavor = ({ searchQuery }) => {
       <div className="flavor-header">
         <h1>Find Your Perfect Pint!</h1>
         <div className="category-buttons">
+          <button
+            className={`category-btn ${category === "" ? "active" : ""}`}
+            onClick={() => setCategory("")}
+          >
+            All
+          </button>
           <button
             className={`category-btn ${
               category === "topSeller" ? "active" : ""
@@ -122,7 +129,9 @@ const Flavor = ({ searchQuery }) => {
                 <h3>{curr.flavor} Ice Cream</h3>
                 <div className="price-container">
                   {curr.previousPrice && (
-                    <span className="original-price">{curr.previousPrice}</span>
+                    <span className="original-price">
+                      {curr.previousPrice}
+                    </span>
                   )}
                   <span className="current-price">₹{curr.price}</span>
                 </div>

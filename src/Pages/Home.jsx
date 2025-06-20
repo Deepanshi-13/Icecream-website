@@ -4,7 +4,7 @@ import Crafting from "../component/Crafting/Crafting.jsx";
 import Flavor from "../component/Flavor/Flavor.jsx";
 import SpecialItems from "../component/SpecialItems/SpecialItems.jsx";
 import About from "../Pages/About.jsx";
-import Contact from "./Contact.jsx";
+import Footer from "../component/Footer/Footer.jsx";
 
 const Home = () => {
   return (
@@ -14,10 +14,7 @@ const Home = () => {
       <Flavor />
       <SpecialItems />
       <About />
-      <Contact />
-   
-     
-      
+      <Footer/>
     </div>
   );
 };

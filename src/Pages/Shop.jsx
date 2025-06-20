@@ -1,5 +1,6 @@
 // Shop.jsx
 import Flavor from "../component/Flavor/Flavor";
+import SpecialItems from "../component/SpecialItems/SpecialItems";
 import "./Shop.css";
 import React, { useState } from "react";
 const Shop = () => {
@@ -16,6 +17,7 @@ const Shop = () => {
         />
       </div>
       <Flavor searchQuery={searchQuery} />;
+      <SpecialItems/>
     </>
   );
 };

@@ -155,7 +155,8 @@ const Navbar = () => {
                 ))}
               </tbody>
             </Table>
-            <p><b>Total:</b> ₹{calculateTotal()}</p>
+            <p><b>Total Price:</b> ₹{calculateTotal()}</p>
+            <button style={{background:"green"}}>Checkout</button>
           </div>
         ) : (
           <div className="Card_details">
