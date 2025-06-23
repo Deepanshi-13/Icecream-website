@@ -8,7 +8,6 @@ const AppLayout = () => {
     <div>
       <main>
         <Navbar />
-
         <Outlet />
       </main>
     </div>
