@@ -36,7 +36,7 @@ const AppRoute = () => {
             <Route path="about" element={<About />} />
             <Route path="contact" element={<Contact />} />
           </Route>
-          <Route path="admin" element={<DashboardLayout />}>
+          <Route  element={<DashboardLayout />}>
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="customerManagement" element={<CustomerManagement />} />
             <Route path="flavorManagement" element={<FlavorManagement />} />

@@ -1,6 +1,16 @@
+/* Wrapper to center the auth container */
+.auth-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full height to center vertically */
+  background-color: #f9f9f9; /* Optional: light background */
+}
+
+/* Main container box */
 .auth-container {
   max-width: 400px;
-  margin: auto;
+  width: 100%;
   padding: 30px;
   border: 1px solid #eee;
   border-radius: 10px;
@@ -9,20 +19,34 @@
   text-align: center;
 }
 
+/* Form inside the container */
 .auth-form {
   margin-top: 20px;
 }
 
+/* Toggle text like “Already have an account?” */
 .toggle-text {
   margin-top: 15px;
   color: #555;
 }
 
+/* Clickable part of toggle text */
 .toggle-text span {
   color: hotpink;
   cursor: pointer;
   font-weight: 500;
 }
-.auth-btn{
-    background-color: palevioletred;
+
+/* Custom button */
+.auth-btn {
+  background-color: palevioletred;
+  border: none;
+  color: white;
+  font-weight: 500;
+  padding: 6px 0;
+}
+
+.auth-btn:hover {
+  background-color: hotpink;
+  color: white;
 }

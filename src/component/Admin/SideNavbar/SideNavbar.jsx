@@ -8,7 +8,7 @@ import {
   DatabaseOutlined,
   LineChartOutlined,
 } from "@ant-design/icons";
-import { Link } from "react-router-dom"
+import {Link} from "react-router-dom"
 const { Sider } = Layout;
 
 const SideNavbar = ({ onSelect }) => {
@@ -49,19 +49,19 @@ const SideNavbar = ({ onSelect }) => {
         onClick={({ key }) => onSelect(key)}
       >
         <Menu.Item key="dashboard" icon={<DashboardOutlined />}>
-          <Link to="/admin/dashboard"> Dashboard</Link>
+         <Link to="/dashboard"> Dashboard</Link>
         </Menu.Item>
         <Menu.Item key="customers" icon={<UserOutlined />}>
-          <Link to="/admin/customerManagement">Customer Management</Link>
+          <Link to="/customerManagement">Customer Management</Link>
         </Menu.Item>
         <Menu.Item key="flavors" icon={<AppstoreOutlined />}>
-          <Link to="/admin/flavorManagement">Flavor Management</Link>
+          <Link to="/flavorManagement">Flavor Management</Link>
         </Menu.Item>
         <Menu.Item key="inventory" icon={<DatabaseOutlined />}>
-          <Link to="/admin/inventory">Inventory Management</Link>
+          <Link to="/inventory">Inventory Management</Link>
         </Menu.Item>
         <Menu.Item key="sales" icon={<LineChartOutlined />}>
-          <Link to="/admin/sales"> Sales Tracking</Link>
+         <Link to="/sales"> Sales Tracking</Link>
         </Menu.Item>
       </Menu>
     </Sider>
