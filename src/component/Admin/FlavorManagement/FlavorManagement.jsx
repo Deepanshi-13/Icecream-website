@@ -3,13 +3,13 @@ import "./FlavorManagement.css";
 
 const FlavorManagement = () => {
   const [flavors, setFlavors] = useState([
-    { id: 1, name: 'Strawberry Ice Cream', category: 'Classic', status: 'Active', price: 4.50, ingredients: 'Milk, Cream, Strawberry Extract', allergens: 'Dairy' },
-    { id: 2, name: 'Vanilla Ice Cream', category: 'Classic', status: 'Active', price: 4.75, ingredients: 'Milk, Cream, vanilla, Sugar', allergens: 'Dairy' },
-    { id: 3, name: 'Chocolate Ice Cream', category: 'Fruit', status: 'Active', price: 4.85, ingredients: 'Milk, Cream,Coco', allergens: 'Dairy' },
-    { id: 4, name: 'Mango Ice Cream', category: 'Specialty', status: 'Active', price: 5.25, ingredients: 'Milk, Cream, Mango', allergens: 'Dairy' },
-    { id: 5, name: 'Blueberry Ice Cream', category: 'Specialty', status: 'Active', price: 5.50, ingredients: 'Blueberry, Marshmallows, Nuts', allergens: 'Dairy, Nuts' },
-    { id: 6, name: 'Butterscotch Ice Cream', category: 'Premium', status: 'Limited', price: 6.25, ingredients: 'Milk, Cream, Butterscotch', allergens: 'Dairy, Nuts' }
-  ])``
+    { id: 1, name: 'Strawberry Ice Cream', category: 'Classic', status: 'Active', price: 80, ingredients: 'Milk, Cream, Strawberry Extract', allergens: 'Dairy' },
+    { id: 2, name: 'Vanilla Ice Cream', category: 'Classic', status: 'Active', price: 60, ingredients: 'Milk, Cream, vanilla, Sugar', allergens: 'Dairy' },
+    { id: 3, name: 'Chocolate Ice Cream', category: 'Fruit', status: 'Active', price:80, ingredients: 'Milk, Cream,Coco', allergens: 'Dairy' },
+    { id: 4, name: 'Mango Ice Cream', category: 'Specialty', status: 'Active', price: 75, ingredients: 'Milk, Cream, Mango', allergens: 'Dairy' },
+    { id: 5, name: 'Blueberry Ice Cream', category: 'Specialty', status: 'Active', price: 70, ingredients: 'Blueberry, Marshmallows, Nuts', allergens: 'Dairy, Nuts' },
+    { id: 6, name: 'Butterscotch Ice Cream', category: 'Premium', status: 'Limited', price: 80, ingredients: 'Milk, Cream, Butterscotch', allergens: 'Dairy, Nuts' }
+  ])
   const [showAddForm, setShowAddForm] = useState(false)
   const [editingFlavor, setEditingFlavor] = useState(null);
   const [formData, setFormData] = useState({
@@ -143,7 +143,7 @@ const FlavorManagement = () => {
                     </select>
                   </div>
                   <div className='form-group'>
-                    <label>Price(Rs)</label>
+                    <label>Price(₹)</label>
                     <input
                       type='number'
                       step={"0.01"}
@@ -218,7 +218,7 @@ const FlavorManagement = () => {
                     <span className={`status-badge ${getStatusColor(flavor.status)} `}>{flavor.status}
                     </span>
                   </td>
-                  <td className='price'>${flavor.price.toFixed(2)}
+                  <td className='price'>₹{flavor.price.toFixed(2)}
                   </td>
                   <td className='ingredients'>{flavor.ingredients}</td>
                   <td className='allergens'>

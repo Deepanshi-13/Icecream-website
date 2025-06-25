@@ -1,9 +1,15 @@
 /* Shop.css */
+.search-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+  margin-right: 9rem;
+}
+
 .search-bar {
-  width: 55rem;
+  width: 25rem;
   padding: 15px 16px;
-  margin: 30px auto;
-  display: block;
   border: 1px solid #ccc;
   border-radius: 8px;
   font-size: 16px;

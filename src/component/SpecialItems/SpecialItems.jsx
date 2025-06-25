@@ -106,7 +106,7 @@ const SpecialItems = () => {
               <h3>{item.flavor} </h3>
               <div className="price-container">
                 <span className="original-price">{item.previousprice}</span>
-                <span className="current-price">{item.price}</span>
+                <span className="current-price">₹{item.price}</span>
               </div>
               <Button
                 className="buy-now-btn"
