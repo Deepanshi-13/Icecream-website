@@ -6,6 +6,8 @@ import SpecialItems from "../component/SpecialItems/SpecialItems.jsx";
 import About from "../Pages/About.jsx";
 import Footer from "../component/Footer/Footer.jsx";
 
+
+
 const Home = () => {
   return (
     <div>
@@ -14,7 +16,9 @@ const Home = () => {
       <Flavor />
       <SpecialItems />
       <About />
-      <Footer/>
+      <Footer />
+
+
     </div>
   );
 };
