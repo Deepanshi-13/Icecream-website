@@ -4,7 +4,7 @@
   padding: 2rem;
   background-color: #f9f9f9;
   min-height: 100vh;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* Header section */
@@ -28,7 +28,7 @@
 }
 
 .primary-btn {
-  background-color: #4CAF50;
+  background-color: rgb(210, 54, 132);
   color: white;
   padding: 10px 16px;
   border: none;
@@ -38,7 +38,7 @@
 }
 
 .primary-btn:hover {
-  background-color: #45a049;
+  background-color: rgb(240, 67, 153);
 }
 
 /* Modal */
@@ -48,7 +48,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0, 0, 0, 0.4);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -61,7 +61,7 @@
   border-radius: 10px;
   width: 600px;
   max-width: 90%;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .modal-header {
@@ -143,12 +143,13 @@ table {
   width: 100%;
   border-collapse: collapse;
   background-color: white;
-  box-shadow: 0 0 8px rgba(0,0,0,0.05);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
   border-radius: 8px;
   overflow: hidden;
 }
 
-th, td {
+th,
+td {
   text-align: left;
   padding: 12px 16px;
   border-bottom: 1px solid #eee;

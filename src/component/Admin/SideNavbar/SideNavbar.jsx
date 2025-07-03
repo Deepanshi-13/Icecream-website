@@ -1,4 +1,4 @@
-// components/SideNavbar.js
+// components/SideNavbar.jsx
 import React from "react";
 import { Layout, Menu } from "antd";
 import {
@@ -8,10 +8,39 @@ import {
   DatabaseOutlined,
   LineChartOutlined,
 } from "@ant-design/icons";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
+
 const { Sider } = Layout;
 
 const SideNavbar = ({ onSelect }) => {
+  const menuItems = [
+    {
+      key: "dashboard",
+      icon: <DashboardOutlined />,
+      label: <Link to="/dashboard">Dashboard</Link>,
+    },
+    {
+      key: "customers",
+      icon: <UserOutlined />,
+      label: <Link to="/customerManagement">Customer Management</Link>,
+    },
+    {
+      key: "flavors",
+      icon: <AppstoreOutlined />,
+      label: <Link to="/flavorManagement">Flavor Management</Link>,
+    },
+    {
+      key: "inventory",
+      icon: <DatabaseOutlined />,
+      label: <Link to="/inventory">Inventory Management</Link>,
+    },
+    {
+      key: "sales",
+      icon: <LineChartOutlined />,
+      label: <Link to="/sales">Sales Tracking</Link>,
+    },
+  ];
+
   return (
     <Sider
       width={220}
@@ -47,23 +76,8 @@ const SideNavbar = ({ onSelect }) => {
           borderRight: "none",
         }}
         onClick={({ key }) => onSelect(key)}
-      >
-        <Menu.Item key="dashboard" icon={<DashboardOutlined />}>
-         <Link to="/dashboard"> Dashboard</Link>
-        </Menu.Item>
-        <Menu.Item key="customers" icon={<UserOutlined />}>
-          <Link to="/customerManagement">Customer Management</Link>
-        </Menu.Item>
-        <Menu.Item key="flavors" icon={<AppstoreOutlined />}>
-          <Link to="/flavorManagement">Flavor Management</Link>
-        </Menu.Item>
-        <Menu.Item key="inventory" icon={<DatabaseOutlined />}>
-          <Link to="/inventory">Inventory Management</Link>
-        </Menu.Item>
-        <Menu.Item key="sales" icon={<LineChartOutlined />}>
-         <Link to="/sales"> Sales Tracking</Link>
-        </Menu.Item>
-      </Menu>
+        items={menuItems} 
+      />
     </Sider>
   );
 };

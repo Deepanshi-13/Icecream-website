@@ -50,9 +50,9 @@ const FlavorManagement = () => {
   };
 
   const handleAddNew = () => {
-  setEditFlavor(null); // Reset edit state
-  setIsModalOpen(true); 
-};
+    setEditFlavor(null); // Reset edit state
+    setIsModalOpen(true);
+  };
 
   const handleDelete = (id) => {
     setFlavors((prev) => prev.filter((flavor) => flavor.id !== id));

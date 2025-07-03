@@ -97,7 +97,7 @@ import kiwi from "../../assets/kiwi.png";
       background: "#fce8c3",
       rating: "4.3★",
       previousPrice: "₹90",
-      price: "₹80",
+      price: "80",
       type:"topTrending",
     },
     {
