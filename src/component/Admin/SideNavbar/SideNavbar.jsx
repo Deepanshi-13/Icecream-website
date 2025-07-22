@@ -29,16 +29,7 @@ const SideNavbar = ({ onSelect }) => {
       icon: <AppstoreOutlined />,
       label: <Link to="/flavorManagement">Flavor Management</Link>,
     },
-    {
-      key: "inventory",
-      icon: <DatabaseOutlined />,
-      label: <Link to="/inventory">Inventory Management</Link>,
-    },
-    {
-      key: "sales",
-      icon: <LineChartOutlined />,
-      label: <Link to="/sales">Sales Tracking</Link>,
-    },
+    
   ];
 
   return (

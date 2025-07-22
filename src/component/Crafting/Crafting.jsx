@@ -2,8 +2,10 @@ import React from "react";
 import "./Crafting.css";
 import mulberry from "../../assets/mulberry.png";
 import strawberry from "../../assets/strawberry.png";
-import arrow from "../../assets/arrow.png";
+import { useNavigate } from "react-router-dom";
+import Button from "../Button/Button";
 const Crafting = () => {
+  const navigate = useNavigate();
   return (
     <>
       <div className="craft-box">
@@ -31,19 +33,16 @@ const Crafting = () => {
           </div>
           <div className="arrow-box">
             <div className="arrow-div">
-              <img src={arrow} alt="arrow-icon" />
-              <h4>Scoop Shop Flavors</h4>
+              <li><b>Scoop Shop Flavors</b></li>
             </div>
             <div className="arrow-div">
-              <img src={arrow} alt="arrow-icon" />
-              <h4>Ice Cream Pints</h4>
+              <li><b>Ice Cream Pints</b></li>
             </div>
             <div className="arrow-div">
-              <img src={arrow} alt="arrow-icon" />
-              <h4>Chocolate Love</h4>
+              <li><b>Chocolate Love</b></li>
             </div>
           </div>
-          <button>Buy Now</button>
+          <Button value="Buy Now" onClick={()=>navigate("flavor")}/>
         </div>
       </div>
     </>

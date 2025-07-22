@@ -77,25 +77,22 @@ const Flavor = ({ searchQuery }) => {
             All
           </button>
           <button
-            className={`category-btn ${
-              category === "topSeller" ? "active" : ""
-            }`}
+            className={`category-btn ${category === "topSeller" ? "active" : ""
+              }`}
             onClick={() => setCategory("topSeller")}
           >
             Top Seller
           </button>
           <button
-            className={`category-btn ${
-              category === "topTrending" ? "active" : ""
-            }`}
+            className={`category-btn ${category === "topTrending" ? "active" : ""
+              }`}
             onClick={() => setCategory("topTrending")}
           >
             Top Trending
           </button>
           <button
-            className={`category-btn ${
-              category === "topProducts" ? "active" : ""
-            }`}
+            className={`category-btn ${category === "topProducts" ? "active" : ""
+              }`}
             onClick={() => setCategory("topProducts")}
           >
             New Products
@@ -110,8 +107,8 @@ const Flavor = ({ searchQuery }) => {
               {curr.type === "topSeller"
                 ? "BESTSELLER"
                 : curr.type === "topTrending"
-                ? "TRENDING"
-                : "NEW"}
+                  ? "TRENDING"
+                  : "NEW"}
             </div>
 
             <div className="card-header">

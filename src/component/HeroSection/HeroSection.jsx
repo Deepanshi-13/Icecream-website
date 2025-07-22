@@ -6,6 +6,8 @@ import bg from "../../assets/bg.png";
 import candy from "../../assets/candy.png";
 import smallCake from "../../assets/smallCake.png";
 import Button from "../Button/Button";
+import { useNavigate } from "react-router-dom";
+
 const Count = () => {
   const num = [
     {
@@ -24,9 +26,9 @@ const Count = () => {
   return (
     <>
       <div className="number-container">
-        {num.map((curr) => {
+        {num.map((curr, index) => {
           return (
-            <div className="numbers">
+            <div className="numbers" key={index}>
               <div className="num-div">
                 <div className="number-box">
                   <h2>{curr.number}</h2>
@@ -74,6 +76,7 @@ const MiddleSection = () => {
 };
 
 const HeroSection = () => {
+  const navigate = useNavigate();
   return (
     <>
       <div className="main-container">
@@ -88,8 +91,8 @@ const HeroSection = () => {
             <p>The perfect blend of creamy and dreamy</p>
             <p>Taste the magic in every scoop</p>
             <div className="shopnow-div">
-              <Button value="Buy Now"/>
-              <button className="more-flavor">More Flavor</button>
+              <Button value="Buy Now" onClick={()=>navigate("/flavor")} />
+              <button className="more-flavor" onClick={() => navigate("/shop")}>More Flavor</button>
             </div>
           </div>
           <div className="image-box">

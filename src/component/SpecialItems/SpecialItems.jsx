@@ -10,12 +10,11 @@ import { useDispatch } from "react-redux";
 import { FaStar, FaRegStar } from "react-icons/fa";
 import { ADD } from "../../Redux/actions/action";
 
-const SpecialItems = () => {
+const SpecialItems = ({ searchQuery }) => {
   const dispatch = useDispatch();
   const send = (item) => {
     dispatch(ADD({ ...item, quantity: 1 }));
   };
- 
 
   const specialIcecream = [
     {
@@ -74,6 +73,15 @@ const SpecialItems = () => {
     },
   ];
 
+
+  const filteredItems = specialIcecream.filter((item) => {
+    if (!searchQuery) {
+      return true;
+    } else {
+      return item.flavor.toLowerCase().includes(searchQuery.toLowerCase());
+    }
+  });
+
   const renderStars = (rating) => {
     return Array(5)
       .fill(0)
@@ -90,7 +98,7 @@ const SpecialItems = () => {
     <div className="special-container">
       <h1 className="special-title">Our Special</h1>
       <div className="special-grid">
-        {specialIcecream.map((item) => (
+        {filteredItems.map((item) => (
           <div className="special-card" key={item.id}>
             <div
               className="special-card-image"

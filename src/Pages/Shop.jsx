@@ -17,7 +17,7 @@ const Shop = () => {
         />
       </div>
       <Flavor searchQuery={searchQuery} />;
-      <SpecialItems/>
+      <SpecialItems searchQuery={searchQuery} />
     </>
   );
 };

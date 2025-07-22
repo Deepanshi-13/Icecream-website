@@ -10,9 +10,8 @@ import AuthPage from "../Pages/AuthPage";
 import Dashboard from "../component/Admin/Dashboard/Dashboard";
 import CustomerManagement from "../component/Admin/CustomerManagement/CustomerManagement";
 import FlavorManagement from "../component/Admin/FlavorManagement/FlavorManagement";
-import SalesTracking from "../component/Admin/SalesTracking/SalesTracking";
-import InventoryMangement from "../component/Admin/InventoryManagement/InventoryMangement";
 import DashboardLayout from "../Layout/DashboardLayout";
+import Flavor from "../component/Flavor/Flavor";
 
 const PrivateRoute = () => {
 
@@ -35,13 +34,12 @@ const AppRoute = () => {
             <Route path="flavorDetails/:id" element={<FlavorDetails />} />
             <Route path="about" element={<About />} />
             <Route path="contact" element={<Contact />} />
+            <Route path="flavor" element={<Flavor />} />
           </Route>
-          <Route  element={<DashboardLayout />}>
+          <Route element={<DashboardLayout />}>
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="customerManagement" element={<CustomerManagement />} />
             <Route path="flavorManagement" element={<FlavorManagement />} />
-            <Route path="inventory" element={<InventoryMangement />} />
-            <Route path="sales" element={<SalesTracking />} />
           </Route>
         </Route>
 
