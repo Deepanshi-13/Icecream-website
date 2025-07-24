@@ -13,13 +13,12 @@ const Contact = () => {
 
     const form = e.target;
 
-    // Send main message to your inbox
     emailjs
       .sendForm(
-        "service_q7j4y2j",        // Your main email service ID
-        "template_x4ptyvg",       // Your admin template ID
+        "service_q7j4y2j",        //  main email service ID
+        "template_x4ptyvg",       //  admin template ID
         form,
-        "KhE6rq4qrWp5mfH2L"       // Your public key
+        "KhE6rq4qrWp5mfH2L"       //  public key
       )
       .then(
         (result) => {

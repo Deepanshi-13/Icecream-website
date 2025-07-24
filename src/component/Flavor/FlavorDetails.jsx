@@ -10,7 +10,7 @@ import { REMOVE } from "../../Redux/actions/action";
 const FlavorDetails = () => {
   const [data, setData] = useState([]);
   const { id } = useParams();
-  const history = useNavigate();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const getData = useSelector((state) => state.cart.carts);
 
@@ -22,7 +22,7 @@ const FlavorDetails = () => {
   };
   const remove = (e) => {
     dispatch(REMOVE(e));
-    history("/shop");
+    navigate("/shop");
   };
 
   useEffect(() => {

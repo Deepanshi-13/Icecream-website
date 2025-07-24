@@ -17,11 +17,8 @@ const About = () => {
         </div>
       </section>
 
-      {/* Main Content */}
       <main className="about-content">
-        {/* Story and Image Row */}
         <div className="story-image-row">
-          {/* Story Section - Left Side */}
           <section className="story-section">
             <div className="story-card">
               <h2 className="section-title">
@@ -38,13 +35,11 @@ const About = () => {
             </div>
           </section>
 
-          {/* Image Section - Right Side */}
           <section className="image-showcase">
             <img src={aboutImage} alt="Delicious ScoopieDoo ice cream" className="featured-image" />
           </section>
         </div>
 
-        {/* Values Section */}
         <section className="values-section">
           <h2 className="values-title">Our Core Values</h2>
           <div className="values-grid">
