@@ -61,7 +61,7 @@ const SideNavbar = ({ onSelect }) => {
 
       <Menu
         mode="inline"
-        defaultSelectedKeys={["dashboard"]}
+      
         style={{
           background: "#fefefe",
           borderRight: "none",

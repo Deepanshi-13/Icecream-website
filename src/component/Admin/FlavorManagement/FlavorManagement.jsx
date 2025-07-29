@@ -7,7 +7,6 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
-
 const FlavorManagement = () => {
   const [flavors, setFlavors] = useState([
     { id: 1, name: 'Strawberry Icecream', category: 'Classic', status: 'Active', price: 80, ingredients: 'Milk, Cream, Strawberry Extract', allergens: 'Dairy' },

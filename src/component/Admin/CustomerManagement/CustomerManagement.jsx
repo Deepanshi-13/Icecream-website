@@ -94,28 +94,28 @@ const CustomerManagement = () => {
         </div>
 
         <div className="customer-stats">
-          <div className="stat-card primary">
+          <div className="stat-card ">
             <div className="stat-icon">👥</div>
             <div className="stat-content">
               <h3>{stats.total}</h3>
               <p>Total Customers</p>
             </div>
           </div>
-          <div className="stat-card info">
+          <div className="stat-card ">
             <div className="stat-icon">🆕</div>
             <div className="stat-content">
               <h3>{stats.new}</h3>
               <p>New Customers</p>
             </div>
           </div>
-          <div className="stat-card success">
+          <div className="stat-card ">
             <div className="stat-icon">✅</div>
             <div className="stat-content">
               <h3>{stats.active}</h3>
               <p>Active Customers</p>
             </div>
           </div>
-          <div className="stat-card accent">
+          <div className="stat-card ">
             <div className="stat-icon">⭐</div>
             <div className="stat-content">
               <h3>{stats.vip}</h3>

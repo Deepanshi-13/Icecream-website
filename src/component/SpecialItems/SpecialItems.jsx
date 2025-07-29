@@ -10,69 +10,68 @@ import { useDispatch } from "react-redux";
 import { FaStar, FaRegStar } from "react-icons/fa";
 import { ADD } from "../../Redux/actions/action";
 
+export const specialIcecream = [
+  {
+    id: "1",
+    image: falooda,
+    flavor: "Falooda",
+    background: "#FFD1DC",
+    rating: 4,
+    previousprice: "₹85",
+    price: "80",
+  },
+  {
+    id: "2",
+    image: matkaKulfi,
+    flavor: "Matka Kulfi",
+    background: "#E0C097",
+    rating: 4,
+    previousprice: "₹85",
+    price: "80",
+  },
+  {
+    id: "3",
+    image: icecreamRoll,
+    flavor: "Icecream Roll",
+    background: "#FFE4E1",
+    rating: 4,
+    previousprice: "₹85",
+    price: "80",
+  },
+  {
+    id: "4",
+    image: scoop,
+    flavor: "Scoop",
+    background: "#D2B48C",
+    rating: 4,
+    previousprice: "₹85",
+    price: "80",
+  },
+  {
+    id: "5",
+    image: tuttiFrutti,
+    flavor: "Tutti Frutti",
+    background: "#fce8c3",
+    rating: 4,
+    previousprice: "₹85",
+    price: "80",
+  },
+  {
+    id: "6",
+    image: cone,
+    flavor: "Cone",
+    background: "#E6E6FA",
+    rating: 4,
+    previousprice: "₹85",
+    price: "80",
+  },
+];
+
 const SpecialItems = ({ searchQuery }) => {
   const dispatch = useDispatch();
   const send = (item) => {
     dispatch(ADD({ ...item, quantity: 1 }));
   };
-
-  const specialIcecream = [
-    {
-      id: "1",
-      image: falooda,
-      flavor: "Falooda",
-      background: "#FFD1DC",
-      rating: 4,
-      previousprice: "₹85",
-      price: "80",
-    },
-    {
-      id: "2",
-      image: matkaKulfi,
-      flavor: "Matka Kulfi",
-      background: "#E0C097",
-      rating: 4,
-      previousprice: "₹85",
-      price: "80",
-    },
-    {
-      id: "3",
-      image: icecreamRoll,
-      flavor: "Icecream Roll",
-      background: "#FFE4E1",
-      rating: 4,
-      previousprice: "₹85",
-      price: "80",
-    },
-    {
-      id: "4",
-      image: scoop,
-      flavor: "Scoop",
-      background: "#D2B48C",
-      rating: 4,
-      previousprice: "₹85",
-      price: "80",
-    },
-    {
-      id: "5",
-      image: tuttiFrutti,
-      flavor: "Tutti Frutti",
-      background: "#fce8c3",
-      rating: 4,
-      previousprice: "₹85",
-      price: "80",
-    },
-    {
-      id: "6",
-      image: cone,
-      flavor: "Cone",
-      background: "#E6E6FA",
-      rating: 4,
-      previousprice: "₹85",
-      price: "80",
-    },
-  ];
-
 
   const filteredItems = specialIcecream.filter((item) => {
     if (!searchQuery) {
