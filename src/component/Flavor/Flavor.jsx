@@ -4,9 +4,10 @@ import Button from "../Button/Button";
 import { FaArrowLeft, FaArrowRight, FaStar, FaRegStar } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import flavorData from "../Flavor/FlavorData";
 import { setFlavors } from "../../Redux/actions/action";
 import { ADD } from "../../Redux/actions/action";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../firebase/Firebase"; 
 import 'react-toastify/dist/ReactToastify.css';
 
 const Flavor = ({ searchQuery, setSearchQuery }) => {
@@ -17,10 +18,25 @@ const Flavor = ({ searchQuery, setSearchQuery }) => {
   const ItemsPerPage = 6;
 
   const allFlavors = useSelector((state) => state.flavor.flavors);
-  console.log("All Flavors:", allFlavors);
 
+  // Fetch flavors from Firestore
   useEffect(() => {
-    dispatch(setFlavors(flavorData));
+    const fetchFlavors = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, "flavors"));
+        const flavorsFromFirebase = querySnapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        console.log(flavorsFromFirebase);
+        dispatch(setFlavors(flavorsFromFirebase));
+      } catch (error) {
+        console.error("Error fetching flavors from Firestore:", error);
+        toast.error("Failed to load flavors.");
+      }
+    };
+
+    fetchFlavors();
   }, [dispatch]);
 
   const send = (item) => {
@@ -41,7 +57,7 @@ const Flavor = ({ searchQuery, setSearchQuery }) => {
   const totalPages = Math.ceil(filterItems.length / ItemsPerPage);
 
   useEffect(() => {
-    let filtered = flavorData;
+   let filtered = allFlavors.filter(item => item.type !== "Special");
 
     if (searchQuery) {
       setCategory("");
@@ -50,14 +66,16 @@ const Flavor = ({ searchQuery, setSearchQuery }) => {
       );
     }
 
-    if (category !== "") {
+    
+    if (category !== "" ) {
       setSearchQuery("");
       filtered = filtered.filter((item) => item.type === category);
+      console.log(filtered);
     }
 
     setFilterItems(filtered);
     setCurrentPage(1);
-  }, [category, searchQuery]);
+  }, [category, searchQuery, allFlavors]);
 
   const PreviousPage = () => setCurrentPage((prev) => Math.max(prev - 1, 1));
   const NextPage = () =>
@@ -87,20 +105,20 @@ const Flavor = ({ searchQuery, setSearchQuery }) => {
             All
           </button>
           <button
-            className={`category-btn ${category === "topSeller" ? "active" : ""}`}
-            onClick={() => setCategory("topSeller")}
+            className={`category-btn ${category === "BestSeller" ? "active" : ""}`}
+            onClick={() => setCategory("BestSeller")}
           >
             Top Seller
           </button>
           <button
-            className={`category-btn ${category === "topTrending" ? "active" : ""}`}
-            onClick={() => setCategory("topTrending")}
+            className={`category-btn ${category === "Trending" ? "active" : ""}`}
+            onClick={() => setCategory("Trending")}
           >
             Top Trending
           </button>
           <button
-            className={`category-btn ${category === "topProducts" ? "active" : ""}`}
-            onClick={() => setCategory("topProducts")}
+            className={`category-btn ${category === "New" ? "active" : ""}`}
+            onClick={() => setCategory("New")}
           >
             New Products
           </button>
@@ -111,11 +129,11 @@ const Flavor = ({ searchQuery, setSearchQuery }) => {
         {selectedItems.map((curr) => (
           <div className="flavor-card" key={curr.id}>
             <div className="card-badge">
-              {curr.type === "topSeller"
+              {curr.type === "BestSeller"
                 ? "BESTSELLER"
-                : curr.type === "topTrending"
-                  ? "TRENDING"
-                  : "NEW"}
+                : curr.type === "Trending"
+                ? "TRENDING"
+                : "NEW"}
             </div>
 
             <div className="card-header">
@@ -123,7 +141,7 @@ const Flavor = ({ searchQuery, setSearchQuery }) => {
                 className="card-image"
                 style={{ backgroundColor: curr.background }}
               >
-                <img src={curr.image} alt={curr.flavor} />
+                <img  src={curr.image} alt={curr.flavor} />
               </div>
               <div className="card-content">
                 <div className="rating">

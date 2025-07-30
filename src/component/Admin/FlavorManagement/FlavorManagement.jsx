@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './FlavorManagement.css';
 import ReusableModal from '../Modal/ReuseableModal';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import FlavorModal from '../Form/FlavorModal';
 import { collection, addDoc, getDocs, deleteDoc, doc, updateDoc } from 'firebase/firestore';
 import { db } from '../../../firebase/Firebase';
-import 'react-toastify/dist/ReactToastify.css';
 
 const FlavorManagement = () => {
   const [flavors, setFlavors] = useState([]);
@@ -53,7 +52,7 @@ const FlavorManagement = () => {
   const handleDelete = async (id) => {
     try {
       await deleteDoc(doc(db, 'flavors', id));
-      toast.success("Flavor deleted successfully!");
+      toast.success("Flavor deleted!");
       fetchFlavors();
     } catch (error) {
       toast.error("Failed to delete flavor.");
@@ -69,7 +68,6 @@ const FlavorManagement = () => {
 
   return (
     <div className='flavor-management'>
-      <ToastContainer />
       <div className="section-header">
         <div>
           <h2>Flavor Management</h2>
@@ -104,11 +102,7 @@ const FlavorManagement = () => {
                 </td>
                 <td>{flavor.flavor}</td>
                 <td>{flavor.type}</td>
-                <td>
-                  <span className={`status-badge ${flavor?.status?.toLowerCase()}`}>
-                    {flavor.status}
-                  </span>
-                </td>
+                <td><span className={`status-badge ${flavor?.status?.toLowerCase()}`}>{flavor.status}</span></td>
                 <td>{flavor.rating}</td>
                 <td>₹{flavor.price}</td>
                 <td>₹{flavor.previousPrice}</td>
