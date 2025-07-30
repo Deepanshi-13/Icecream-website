@@ -17,7 +17,7 @@ const Shop = () => {
           onChange={(e) => setSearchQuery(e.target.value)}
         />
       </div>
-      <Flavor searchQuery={searchQuery} />;
+      <Flavor searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
       <SpecialItems searchQuery={searchQuery} />
       <Footer/>
     </>

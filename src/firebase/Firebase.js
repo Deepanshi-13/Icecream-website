@@ -1,4 +1,5 @@
 import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
 import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from "firebase/auth";
 const firebaseConfig = {
   apiKey: "AIzaSyB3TeukE0qk_DJyVgTrMZohfE1VxVU8GHg",
@@ -10,6 +11,7 @@ const firebaseConfig = {
   databaseURL: "https://icecream-shopping-website-default-rtdb.firebaseio.com"
 };
 export const app = initializeApp(firebaseConfig);
+export const db = getFirestore(app);
 const firebaseAuth = getAuth(app);
 
 export const signUpWithEmail = async (email, password) => {

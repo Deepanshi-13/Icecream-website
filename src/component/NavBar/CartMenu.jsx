@@ -1,21 +1,28 @@
 import React from "react";
 import { Menu, Table } from "@mui/material";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import shoppingCart from "../../assets/shoppingCart.png";
-import "./CartMenu.css"; 
+import "./CartMenu.css";
+import { useDispatch, useSelector } from "react-redux";
+import { REMOVE, INCREMENT, DECREMENT } from "../../Redux/actions/action";
 
-const CartMenu = ({
-  anchorEl,
-  open,
-  handleClose,
-  getData,
-  remove,
-  increment,
-  decrement,
-  calculateTotal,
-}) => {
+const CartMenu = ({ anchorEl, open, handleClose }) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const getData = useSelector((state) => state.cart.carts);
+
+  const remove = (e) => dispatch(REMOVE(e));
+  const increment = (e) => dispatch(INCREMENT(e));
+  const decrement = (e) => dispatch(DECREMENT(e));
+
+  const calculateTotal = () => {
+    return getData
+      .reduce((total, item) => total + Number(item.price * item.quantity), 0)
+      .toFixed(2);
+  };
+
   return (
     <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
       {getData.length ? (
@@ -60,7 +67,14 @@ const CartMenu = ({
             </tbody>
           </Table>
           <p><b>Total Price:</b> ₹{calculateTotal()}</p>
-          <button style={{ background: "green" }}>Checkout</button>
+          <button style={{ background: "green", color: "#fff", padding: "6px 12px" }}
+            onClick={() => {
+              handleClose();
+              navigate("/checkout");
+            }}
+          >
+            Checkout
+          </button>
         </div>
       ) : (
         <div className="Card_details">

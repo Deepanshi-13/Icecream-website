@@ -1,109 +1,120 @@
-// src/pages/FlavorManagement.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './FlavorManagement.css';
 import ReusableModal from '../Modal/ReuseableModal';
-import Form from '../Form/Form';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
+import FlavorModal from '../Form/FlavorModal';
+import { collection, addDoc, getDocs, deleteDoc, doc, updateDoc } from 'firebase/firestore';
+import { db } from '../../../firebase/Firebase';
 import 'react-toastify/dist/ReactToastify.css';
 
-
 const FlavorManagement = () => {
-  const [flavors, setFlavors] = useState([
-    { id: 1, name: 'Strawberry Icecream', category: 'Classic', status: 'Active', price: 80, ingredients: 'Milk, Cream, Strawberry Extract', allergens: 'Dairy' },
-    { id: 2, name: 'Vanilla Icecream', category: 'Classic', status: 'Active', price: 60, ingredients: 'Milk, Cream, Vanilla, Sugar', allergens: 'Dairy' },
-    { id: 3, name: 'Chocolate Icecream', category: 'Fruit', status: 'Active', price: 80, ingredients: 'Milk, Cream, Chocolate', allergens: 'Dairy' },
-    { id: 4, name: 'Mango Icecream', category: 'Specialty', status: 'Active', price: 75, ingredients: 'Milk, Cream, Mango', allergens: 'Dairy' },
-    { id: 5, name: 'Blueberry Icecream', category: 'Specialty', status: 'Active', price: 70, ingredients: 'Blueberry, Marshmallows, Nuts', allergens: 'Dairy, Nuts' },
-    { id: 6, name: 'Butterscotch Icecream', category: 'Premium', status: 'Limited', price: 80, ingredients: 'Milk, Cream, Butterscotch', allergens: 'Dairy, Nuts' }
-  ])
+  const [flavors, setFlavors] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editFlavor, setEditFlavor] = useState(null);
-  const handleOpen = (flavor = null) => {
+
+  const fetchFlavors = async () => {
+    try {
+      const snapshot = await getDocs(collection(db, 'flavors'));
+      const data = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      setFlavors(data);
+      console.log("Fetched flavors:", data);
+    } catch (error) {
+      toast.error("Error fetching flavors");
+    }
+  };
+
+  useEffect(() => {
+    fetchFlavors();
+  }, []);
+
+  const handleFormSubmit = async (data) => {
+    try {
+      if (editFlavor) {
+        const docRef = doc(db, 'flavors', editFlavor.id);
+        await updateDoc(docRef, data);
+        toast.success("Flavor updated successfully!");
+      } else {
+        await addDoc(collection(db, 'flavors'), data);
+        toast.success("Flavor added successfully!");
+      }
+      fetchFlavors();
+    } catch (error) {
+      toast.error("Error saving flavor data!");
+    }
+    handleClose();
+    setEditFlavor(null);
+  };
+
+  const handleAddNew = () => {
+    setEditFlavor(null);
+    setIsModalOpen(true);
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      await deleteDoc(doc(db, 'flavors', id));
+      toast.success("Flavor deleted successfully!");
+      fetchFlavors();
+    } catch (error) {
+      toast.error("Failed to delete flavor.");
+    }
+  };
+
+  const handleEdit = (flavor) => {
     setEditFlavor(flavor);
     setIsModalOpen(true);
   };
 
   const handleClose = () => setIsModalOpen(false);
 
-
-  const handleFormSubmit = (data) => {
-    if (editFlavor) {
-      // Edit logic
-      const updatedFlavors = flavors.map((f) =>
-        f.id === editFlavor.id ? { ...data, id: editFlavor.id } : f
-      );
-      setFlavors(updatedFlavors);
-      toast.success("Flavor updated successfully!");
-    } else {
-      // Add logic
-      const newFlavor = {
-        ...data,
-        id: Date.now()
-      };
-      setFlavors((prev) => [...prev, newFlavor]);
-      toast.success("Flavor added successfully!");
-    }
-
-    handleClose();
-    setEditFlavor(null); // Reset edit state
-  };
-
-  const handleAddNew = () => {
-    setEditFlavor(null); // Reset edit state
-    setIsModalOpen(true);
-  };
-
-  const handleDelete = (id) => {
-    setFlavors((prev) => prev.filter((flavor) => flavor.id !== id));
-    toast.success("Flavor deleted successfully!");
-  };
-
-
-  const handleEdit = (flavor) => {
-    setEditFlavor(flavor);
-    setIsModalOpen(true);
-
-  }
-
   return (
     <div className='flavor-management'>
+      <ToastContainer />
       <div className="section-header">
         <div>
           <h2>Flavor Management</h2>
-          <p>Manage your ice cream flavors, ingredients, and pricing</p>
+          <p>Manage your ice cream flavors and pricing</p>
         </div>
-        <button onClick={handleAddNew}>+ Add more flavor</button>
+        <button onClick={handleAddNew}>+ Add Flavor</button>
       </div>
 
       <div className='flavors-table'>
         <table>
           <thead>
             <tr>
-              <th>Flavor Name</th>
-              <th>Category</th>
+              <th>Image</th>
+              <th>Flavor</th>
+              <th>Type</th>
               <th>Status</th>
+              <th>Rating</th>
               <th>Price</th>
-              <th>Ingredients</th>
-              <th>Allergens</th>
+              <th>Previous Price</th>
               <th>Actions</th>
             </tr>
           </thead>
           <tbody>
             {flavors.map((flavor) => (
               <tr key={flavor.id}>
-                <td className='flavor-name'>{flavor.name}</td>
-                <td><span className='category-badge'>{flavor.category}</span></td>
-                <td><span className={`status-badge ${flavor?.status?.toLowerCase()}`}>{flavor.status}</span></td>
-                <td className='price'>₹{flavor.price}.00</td>
-                <td className='ingredients'>{flavor.ingredients}</td>
-                <td className='allergens'>{flavor.allergens}</td>
-                <td className='actions'>
-                  <button className='edit-btn'
-                    onClick={() => handleEdit(flavor)}
-                  >Edit</button>
-                  <button className='delete-btn'
-                    onClick={() => handleDelete(flavor.id)}
-                  >Delete</button>
+                <td>
+                  <img
+                    src={flavor.image}
+                    alt={flavor.flavor}
+                    style={{ width: '50px', height: '50px', borderRadius: '8px' }}
+                  />
+                </td>
+                <td>{flavor.flavor}</td>
+                <td>{flavor.type}</td>
+                <td>
+                  <span className={`status-badge ${flavor?.status?.toLowerCase()}`}>
+                    {flavor.status}
+                  </span>
+                </td>
+                <td>{flavor.rating}</td>
+                <td>₹{flavor.price}</td>
+                <td>₹{flavor.previousPrice}</td>
+                <td>
+                  <button className='edit-btn' onClick={() => handleEdit(flavor)}>Edit</button>
+                  <button className='delete-btn' onClick={() => handleDelete(flavor.id)}>Delete</button>
                 </td>
               </tr>
             ))}
@@ -111,15 +122,14 @@ const FlavorManagement = () => {
         </table>
       </div>
 
-      <ReusableModal isOpen={isModalOpen} onClose={handleClose} >
-        <Form
+      <ReusableModal isOpen={isModalOpen} onClose={handleClose}>
+        <FlavorModal
           onSubmit={handleFormSubmit}
           onCancel={handleClose}
           initialData={editFlavor}
+          onClose={handleClose}
         />
-
       </ReusableModal>
-      <ToastContainer position="top-right" autoClose={3000} />
     </div>
   );
 };

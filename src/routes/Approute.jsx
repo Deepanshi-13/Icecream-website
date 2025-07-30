@@ -12,6 +12,7 @@ import CustomerManagement from "../component/Admin/CustomerManagement/CustomerMa
 import FlavorManagement from "../component/Admin/FlavorManagement/FlavorManagement";
 import DashboardLayout from "../Layout/DashboardLayout";
 import Flavor from "../component/Flavor/Flavor";
+import Checkout from "../component/Checkout/Checkout";
 
 const PrivateRoute = () => {
 
@@ -35,6 +36,7 @@ const AppRoute = () => {
             <Route path="about" element={<About />} />
             <Route path="contact" element={<Contact />} />
             <Route path="flavor" element={<Flavor />} />
+            <Route path="checkout" element={<Checkout />} />
           </Route>
           <Route element={<DashboardLayout />}>
             <Route path="dashboard" element={<Dashboard />} />

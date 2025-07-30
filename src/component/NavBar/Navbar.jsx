@@ -6,28 +6,19 @@ import {
   UserOutlined,
 } from "@ant-design/icons";
 import icecream from "../../assets/ice-cream.png";
-import shoppingCart from "../../assets/shoppingCart.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import Menu from "@mui/material/Menu";
-import { Link, NavLink, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { REMOVE, DECREMENT, INCREMENT } from "../../Redux/actions/action";
+import { Link, useNavigate } from "react-router-dom";
 import { Avatar, Dropdown, Menu as AntMenu } from "antd";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import CartMenu from "../NavBar/CartMenu.jsx";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
-  const getData = useSelector((state) => state.cart.carts);
-  const dispatch = useDispatch();
   const navigate = useNavigate();
   const username = localStorage.getItem("username");
-
-  const remove = (e) => dispatch(REMOVE(e));
-  const decrement = (e) => dispatch(DECREMENT(e));
-  const increment = (e) => dispatch(INCREMENT(e));
-
   const [showMenu, setShowMenu] = useState(false);
   const handleButtonToggle = () => setShowMenu(!showMenu);
 
@@ -36,11 +27,7 @@ const Navbar = () => {
   const handleClick = (event) => setAnchorEl(event.currentTarget);
   const handleClose = () => setAnchorEl(null);
 
-  const calculateTotal = () => {
-    return getData
-      .reduce((total, item) => total + Number(item.price * item.quantity), 0)
-      .toFixed(2);
-  };
+  const getData = useSelector((state) => state.cart.carts);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -83,7 +70,6 @@ const Navbar = () => {
         </label>
       </div>
 
-      {/* Avatar */}
       <Dropdown overlay={userMenu} placement="bottomRight">
         <Avatar
           style={{
@@ -91,7 +77,7 @@ const Navbar = () => {
             cursor: "pointer",
             marginLeft: "20px",
             fontSize: "32px",
-            padding: "1.3rem"
+            padding: "1.3rem",
           }}
         >
           {username ? username[0].toUpperCase() : <UserOutlined />}
@@ -99,7 +85,6 @@ const Navbar = () => {
       </Dropdown>
 
       <div style={{ display: "flex", alignItems: "center" }}>
-        {/* Cart Icon */}
         <div className="navbar-cart">
           <ShoppingCartOutlined
             className="cart-icon"
@@ -109,18 +94,14 @@ const Navbar = () => {
         </div>
       </div>
 
+      {/* Cart logic handled inside CartMenu */}
       <CartMenu
         anchorEl={anchorEl}
         open={open}
         handleClose={handleClose}
-        getData={getData}
-        remove={remove}
-        increment={increment}
-        decrement={decrement}
-        calculateTotal={calculateTotal}
       />
 
-      <ToastContainer position="top-center" />
+      <ToastContainer position="top-center" autoClose={3000} />
     </nav>
   );
 };

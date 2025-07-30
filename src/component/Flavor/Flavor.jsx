@@ -3,11 +3,13 @@ import "./Flavor.css";
 import Button from "../Button/Button";
 import { FaArrowLeft, FaArrowRight, FaStar, FaRegStar } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 import flavorData from "../Flavor/FlavorData";
 import { setFlavors } from "../../Redux/actions/action";
 import { ADD } from "../../Redux/actions/action";
+import 'react-toastify/dist/ReactToastify.css';
 
-const Flavor = ({ searchQuery }) => {
+const Flavor = ({ searchQuery, setSearchQuery }) => {
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
   const [filterItems, setFilterItems] = useState([]);
@@ -23,6 +25,12 @@ const Flavor = ({ searchQuery }) => {
 
   const send = (item) => {
     dispatch(ADD(item));
+    toast.dismiss(); 
+    toast.success(`${item.flavor} added to flavour cart!`, {
+      position: "top-right",
+      autoClose: 1000,
+      toastId: item.id
+    });
   };
 
   const startIndex = (currentPage - 1) * ItemsPerPage;
@@ -36,12 +44,14 @@ const Flavor = ({ searchQuery }) => {
     let filtered = flavorData;
 
     if (searchQuery) {
+      setCategory("");
       filtered = filtered.filter((item) =>
         item.flavor.toLowerCase().includes(searchQuery.toLowerCase())
       );
     }
 
     if (category !== "") {
+      setSearchQuery("");
       filtered = filtered.filter((item) => item.type === category);
     }
 
@@ -77,22 +87,19 @@ const Flavor = ({ searchQuery }) => {
             All
           </button>
           <button
-            className={`category-btn ${category === "topSeller" ? "active" : ""
-              }`}
+            className={`category-btn ${category === "topSeller" ? "active" : ""}`}
             onClick={() => setCategory("topSeller")}
           >
             Top Seller
           </button>
           <button
-            className={`category-btn ${category === "topTrending" ? "active" : ""
-              }`}
+            className={`category-btn ${category === "topTrending" ? "active" : ""}`}
             onClick={() => setCategory("topTrending")}
           >
             Top Trending
           </button>
           <button
-            className={`category-btn ${category === "topProducts" ? "active" : ""
-              }`}
+            className={`category-btn ${category === "topProducts" ? "active" : ""}`}
             onClick={() => setCategory("topProducts")}
           >
             New Products
@@ -143,25 +150,27 @@ const Flavor = ({ searchQuery }) => {
         ))}
       </div>
 
-      <div className="pagination">
-        <button
-          onClick={PreviousPage}
-          disabled={currentPage === 1}
-          className="pagination-btn"
-        >
-          <FaArrowLeft />
-        </button>
-        <span className="page-indicator">
-          Page {currentPage} of {totalPages}
-        </span>
-        <button
-          onClick={NextPage}
-          disabled={currentPage === totalPages}
-          className="pagination-btn"
-        >
-          <FaArrowRight />
-        </button>
-      </div>
+      {filterItems.length > 3 && (
+        <div className="pagination">
+          <button
+            onClick={PreviousPage}
+            disabled={currentPage === 1}
+            className="pagination-btn"
+          >
+            <FaArrowLeft />
+          </button>
+          <span className="page-indicator">
+            Page {currentPage} of {totalPages}
+          </span>
+          <button
+            onClick={NextPage}
+            disabled={currentPage === totalPages}
+            className="pagination-btn"
+          >
+            <FaArrowRight />
+          </button>
+        </div>
+      )}
     </div>
   );
 };

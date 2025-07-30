@@ -6,6 +6,7 @@ import scoop from "../../assets/scoop.png";
 import tuttiFrutti from "../../assets/tuttiFruti.png";
 import cone from "../../assets/cone.png";
 import Button from "../Button/Button";
+import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { FaStar, FaRegStar } from "react-icons/fa";
 import { ADD } from "../../Redux/actions/action";
@@ -71,6 +72,11 @@ const SpecialItems = ({ searchQuery }) => {
   const dispatch = useDispatch();
   const send = (item) => {
     dispatch(ADD({ ...item, quantity: 1 }));
+    toast.success(`${item.flavor} added to cart!`,{
+      position: "top-right",
+      autoClose: 1000,
+      toastId: item.id, // This ensures unique toasts for each item
+    });
   };
 
   const filteredItems = specialIcecream.filter((item) => {
@@ -95,7 +101,7 @@ const SpecialItems = ({ searchQuery }) => {
 
   return (
     <div className="special-container">
-      <h1 className="special-title">Our Special</h1>
+      {!searchQuery && <h1 className="special-title">Our Special</h1>}
       <div className="special-grid">
         {filteredItems.map((item) => (
           <div className="special-card" key={item.id}>
