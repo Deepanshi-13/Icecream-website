@@ -1,6 +1,8 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
-import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore";
+
+
 const firebaseConfig = {
   apiKey: "AIzaSyB3TeukE0qk_DJyVgTrMZohfE1VxVU8GHg",
   authDomain: "icecream-shopping-website.firebaseapp.com",
@@ -10,37 +12,34 @@ const firebaseConfig = {
   appId: "1:222906224619:web:e0d1d724e54aed312053ae",
   databaseURL: "https://icecream-shopping-website-default-rtdb.firebaseio.com"
 };
-export const app = initializeApp(firebaseConfig);
-export const db = getFirestore(app);
-const firebaseAuth = getAuth(app);
 
+const app = initializeApp(firebaseConfig);
+export const auth = getAuth(app);
+export const db = getFirestore(app);
+
+// Sign up - save user with default role "user"
 export const signUpWithEmail = async (email, password) => {
-  try {
-    const result = await createUserWithEmailAndPassword(
-      firebaseAuth,
-      email,
-      password
-    );
-    const user = result.user;
-    console.log(user);
-    return user;
-  } catch (error) {
-    console.error("Error signing up with Email and Password:", error);
-    throw error;
-  }
+  const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+  const user = userCredential.user;
+
+  await setDoc(doc(db, "users", user.uid), {
+    email,
+    role: "user", 
+  });
+
+  return user;
 };
 
+// Sign in - retrieve role
 export const signInWithEmail = async (email, password) => {
-  try {
-    const res = await signInWithEmailAndPassword(
-      firebaseAuth,
-      email,
-      password
-    );
-    const user = res.user;
-    return user
-  } catch (error) {
-    console.log("Error Signing In with Email and password:", error);
-    throw error;
+  const userCredential = await signInWithEmailAndPassword(auth, email, password);
+  const user = userCredential.user;
+
+  const userDoc = await getDoc(doc(db, "users", user.uid));
+  if (userDoc.exists()) {
+    const role = userDoc.data().role;
+    localStorage.setItem("role", role); // Store role for access check
   }
-}
+
+  return user;
+};

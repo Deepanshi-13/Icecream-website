@@ -19,36 +19,45 @@ const PrivateRoute = () => {
   const isAuth = localStorage.getItem("token");
   return isAuth ? <Outlet /> : <Navigate to="/login" />;
 };
+const AdminRoute = () => {
+  const isAuth = localStorage.getItem("token");
+  const role = localStorage.getItem("role");
+  return isAuth && role === "admin" ? <Outlet /> : <Navigate to="/" />;
+};
+
 
 const AppRoute = () => {
   return (
-    <Router>
-      <Routes>
-        {/* Login shown first */}
-        <Route path="/login" element={<AuthPage />} />
+   <Router>
+  <Routes>
+    <Route path="/login" element={<AuthPage />} />
 
-        {/* Protected Routes */}
-        <Route path="/" element={<PrivateRoute />}>
-          <Route element={<AppLayout />}>
-            <Route index element={<Home />} />
-            <Route path="shop" element={<Shop />} />
-            <Route path="flavorDetails/:id" element={<FlavorDetails />} />
-            <Route path="about" element={<About />} />
-            <Route path="contact" element={<Contact />} />
-            <Route path="flavor" element={<Flavor />} />
-            <Route path="checkout" element={<Checkout />} />
-          </Route>
-          <Route element={<DashboardLayout />}>
-            <Route path="dashboard" element={<Dashboard />} />
-            <Route path="customerManagement" element={<CustomerManagement />} />
-            <Route path="flavorManagement" element={<FlavorManagement />} />
-          </Route>
+    {/* Protected Routes for all logged-in users */}
+    <Route path="/" element={<PrivateRoute />}>
+      <Route element={<AppLayout />}>
+        <Route index element={<Home />} />
+        <Route path="shop" element={<Shop />} />
+        <Route path="flavorDetails/:id" element={<FlavorDetails />} />
+        <Route path="about" element={<About />} />
+        <Route path="contact" element={<Contact />} />
+        <Route path="flavor" element={<Flavor />} />
+        <Route path="checkout" element={<Checkout />} />
+      </Route>
+
+      {/* Admin-only routes */}
+      <Route element={<AdminRoute />}>
+        <Route element={<DashboardLayout />}>
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="customerManagement" element={<CustomerManagement />} />
+          <Route path="flavorManagement" element={<FlavorManagement />} />
         </Route>
+      </Route>
+    </Route>
 
-        {/* Fallback */}
-        <Route path="*" element={<Navigate to="/login" />} />
-      </Routes>
-    </Router>
+    <Route path="*" element={<Navigate to="/login" />} />
+  </Routes>
+</Router>
+
   );
 };
 
