@@ -1,5 +1,13 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate, Outlet } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+  Outlet,
+  useLocation,
+} from "react-router-dom";
+
 import Home from "../Pages/Home";
 import Shop from "../Pages/Shop";
 import About from "../Pages/About";
@@ -15,49 +23,57 @@ import Flavor from "../component/Flavor/Flavor";
 import Checkout from "../component/Checkout/Checkout";
 
 const PrivateRoute = () => {
-
   const isAuth = localStorage.getItem("token");
   return isAuth ? <Outlet /> : <Navigate to="/login" />;
 };
+
 const AdminRoute = () => {
-  const isAuth = localStorage.getItem("token");
   const role = localStorage.getItem("role");
-  return isAuth && role === "admin" ? <Outlet /> : <Navigate to="/" />;
+  return role === "admin" ? <Outlet /> : <Navigate to="/" />;
+};
+
+
+const UserRoute = () => {
+  const role = localStorage.getItem("role");
+  return role === "user" ? <Outlet /> : <Navigate to="/dashboard" />;
 };
 
 
 const AppRoute = () => {
   return (
-   <Router>
-  <Routes>
-    <Route path="/login" element={<AuthPage />} />
+    <Router>
+      <Routes>
+        <Route path="/login" element={<AuthPage />} />
 
-    {/* Protected Routes for all logged-in users */}
-    <Route path="/" element={<PrivateRoute />}>
-      <Route element={<AppLayout />}>
-        <Route index element={<Home />} />
-        <Route path="shop" element={<Shop />} />
-        <Route path="flavorDetails/:id" element={<FlavorDetails />} />
-        <Route path="about" element={<About />} />
-        <Route path="contact" element={<Contact />} />
-        <Route path="flavor" element={<Flavor />} />
-        <Route path="checkout" element={<Checkout />} />
-      </Route>
-
-      {/* Admin-only routes */}
-      <Route element={<AdminRoute />}>
-        <Route element={<DashboardLayout />}>
-          <Route path="dashboard" element={<Dashboard />} />
-          <Route path="customerManagement" element={<CustomerManagement />} />
-          <Route path="flavorManagement" element={<FlavorManagement />} />
+        {/* Admin Routes */}
+        <Route element={<PrivateRoute />}>
+          <Route element={<AdminRoute />}>
+            <Route element={<DashboardLayout />}>
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/customerManagement" element={<CustomerManagement />} />
+              <Route path="/flavorManagement" element={<FlavorManagement />} />
+            </Route>
+          </Route>
         </Route>
-      </Route>
-    </Route>
 
-    <Route path="*" element={<Navigate to="/login" />} />
-  </Routes>
-</Router>
+        {/* User Routes */}
+        <Route element={<PrivateRoute />}>
+          <Route element={<UserRoute />}>
+            <Route element={<AppLayout />}>
+              <Route path="/" element={<Home />} />
+              <Route path="/shop" element={<Shop />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/flavorDetails/:id" element={<FlavorDetails />} />
+              <Route path="/flavor" element={<Flavor />} />
+              <Route path="/checkout" element={<Checkout />} />
+            </Route>
+          </Route>
+        </Route>
 
+        <Route path="*" element={<Navigate to="/login" />} />
+      </Routes>
+    </Router>
   );
 };
 

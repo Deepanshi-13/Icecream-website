@@ -1,16 +1,16 @@
-nav {
-  width: 100%;
-  background-color: #fff; /* light background */
-  padding: 10px 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+.admin-navbar {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
+  background-color: white;
+  padding: 0.8rem 2rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
   z-index: 100;
 }
 
+/* Left side: logo group */
 .navbar-left {
   display: flex;
   align-items: center;
@@ -19,13 +19,18 @@ nav {
 
 .navbar-left img {
   height: 40px;
-  width: 40px;
-  object-fit: cover;
+  width: auto;
 }
 
 .navbar-logo {
   font-size: 24px;
   font-weight: bold;
-  color: #ff69b4; /* example pink color, like ice cream vibe */
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #e91e63; /* HotPink */
+  font-family: "Poppins", sans-serif;
+}
+
+/* Right side: avatar */
+.navbar-right {
+  display: flex;
+  align-items: center;
 }

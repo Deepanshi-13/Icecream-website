@@ -23,6 +23,7 @@ const FlavorManagement = () => {
   };
 
   useEffect(() => {
+    console.log('This is for flavor');
     fetchFlavors();
   }, []);
 

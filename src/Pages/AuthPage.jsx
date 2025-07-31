@@ -19,13 +19,23 @@ const AuthPage = () => {
         const user = await signInWithEmail(email, password);
         toast.success("Logged in successfully!");
         localStorage.setItem("token", user.uid);
-        navigate("/");
+
+        // Set role based on email
+        if (email === "admin41d@gmail.com") {
+          localStorage.setItem("role", "admin");
+          navigate("/dashboard");
+        } else {
+          localStorage.setItem("role", "user");
+          navigate("/");
+        }
+
         console.log("Logged in:", user);
       } else {
         const user = await signUpWithEmail(email, password);
         toast.success("Account created successfully!");
         console.log("User created:", user);
       }
+
       form.resetFields();
     } catch (error) {
       toast.error(error.message || "Something went wrong!");

@@ -10,7 +10,7 @@ const App = () => {
   return (
     <>
       <Approute />
-      
+      <ToastContainer position="top-right" autoClose={1000} />
 
     </>
   );

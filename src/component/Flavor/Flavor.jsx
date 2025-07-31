@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 import { setFlavors } from "../../Redux/actions/action";
 import { ADD } from "../../Redux/actions/action";
 import { collection, getDocs } from "firebase/firestore";
-import { db } from "../../firebase/Firebase"; 
+import { db } from "../../firebase/Firebase";
 import 'react-toastify/dist/ReactToastify.css';
 
 const Flavor = ({ searchQuery, setSearchQuery }) => {
@@ -41,12 +41,12 @@ const Flavor = ({ searchQuery, setSearchQuery }) => {
 
   const send = (item) => {
     dispatch(ADD(item));
-    toast.dismiss(); 
-    toast.success(`${item.flavor} added to flavour cart!`, {
-      position: "top-right",
-      autoClose: 1000,
-      toastId: item.id
-    });
+    setTimeout(() => {
+      toast.success(`${item.flavor} added to cart!`, {
+        position: "top-right",
+        autoClose: 1000,
+      });
+    }, 100);
   };
 
   const startIndex = (currentPage - 1) * ItemsPerPage;
@@ -57,7 +57,7 @@ const Flavor = ({ searchQuery, setSearchQuery }) => {
   const totalPages = Math.ceil(filterItems.length / ItemsPerPage);
 
   useEffect(() => {
-   let filtered = allFlavors.filter(item => item.type !== "Special");
+    let filtered = allFlavors.filter(item => item.type !== "Special");
 
     if (searchQuery) {
       setCategory("");
@@ -66,8 +66,8 @@ const Flavor = ({ searchQuery, setSearchQuery }) => {
       );
     }
 
-    
-    if (category !== "" ) {
+
+    if (category !== "") {
       setSearchQuery("");
       filtered = filtered.filter((item) => item.type === category);
       console.log(filtered);
@@ -132,8 +132,8 @@ const Flavor = ({ searchQuery, setSearchQuery }) => {
               {curr.type === "BestSeller"
                 ? "BESTSELLER"
                 : curr.type === "Trending"
-                ? "TRENDING"
-                : "NEW"}
+                  ? "TRENDING"
+                  : "NEW"}
             </div>
 
             <div className="card-header">
@@ -141,7 +141,7 @@ const Flavor = ({ searchQuery, setSearchQuery }) => {
                 className="card-image"
                 style={{ backgroundColor: curr.background }}
               >
-                <img  src={curr.image} alt={curr.flavor} />
+                <img src={curr.image} alt={curr.flavor} />
               </div>
               <div className="card-content">
                 <div className="rating">
