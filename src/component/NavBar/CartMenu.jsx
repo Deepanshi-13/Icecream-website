@@ -17,11 +17,6 @@ const CartMenu = ({ anchorEl, open, handleClose }) => {
   const increment = (e) => dispatch(INCREMENT(e));
   const decrement = (e) => dispatch(DECREMENT(e));
 
-  const calculateTotal = () => {
-    return getData
-      .reduce((total, item) => total + Number(item.price * item.quantity), 0)
-      .toFixed(2);
-  };
 
   return (
     <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
@@ -66,7 +61,6 @@ const CartMenu = ({ anchorEl, open, handleClose }) => {
               ))}
             </tbody>
           </Table>
-          <p><b>Total Price:</b> ₹{calculateTotal()}</p>
           <button style={{ background: "green", color: "#fff", padding: "6px 12px" }}
             onClick={() => {
               handleClose();
