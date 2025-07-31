@@ -70,6 +70,7 @@ const CartMenu = ({ anchorEl, open, handleClose }) => {
             Checkout
           </button>
         </div>
+        
       ) : (
         <div className="Card_details">
           <i className="fas fa-close smallclose" onClick={handleClose}></i>
