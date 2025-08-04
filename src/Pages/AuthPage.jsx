@@ -19,8 +19,8 @@ const AuthPage = () => {
         const user = await signInWithEmail(email, password);
         toast.success("Logged in successfully!");
         localStorage.setItem("token", user.uid);
-
-        // Derive username from email (before @) if not already stored
+        
+        // Store username from email
         const storedUsername = email.split("@")[0];
         localStorage.setItem("username", storedUsername);
 

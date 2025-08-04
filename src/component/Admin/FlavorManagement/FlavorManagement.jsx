@@ -10,6 +10,11 @@ const FlavorManagement = () => {
   const [flavors, setFlavors] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editFlavor, setEditFlavor] = useState(null);
+  const [search, setSearch] = useState("");
+
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
+  };
 
   const fetchFlavors = async () => {
     try {
@@ -25,7 +30,7 @@ const FlavorManagement = () => {
   useEffect(() => {
     console.log('This is for flavor');
     fetchFlavors();
-  }, );
+  }, []);
 
   const handleFormSubmit = async (data) => {
     try {
@@ -67,6 +72,10 @@ const FlavorManagement = () => {
 
   const handleClose = () => setIsModalOpen(false);
 
+  const filteredFlavors = flavors.filter(flavor =>
+    flavor.flavor.toLowerCase().includes(search.toLowerCase())
+  );
+
   return (
     <div className='flavor-management'>
       <div className="section-header">
@@ -75,6 +84,17 @@ const FlavorManagement = () => {
           <p>Manage your ice cream flavors and pricing</p>
         </div>
         <button onClick={handleAddNew}>+ Add Flavor</button>
+      </div>
+
+      <div className="search-group">
+        <input
+          type="text"
+          name="search"
+          value={search}
+          onChange={handleSearch}
+          placeholder="Search Flavor..."
+          className="search-input"
+        />
       </div>
 
       <div className='flavors-table'>
@@ -92,7 +112,7 @@ const FlavorManagement = () => {
             </tr>
           </thead>
           <tbody>
-            {flavors.map((flavor) => (
+            {filteredFlavors.map((flavor) => (
               <tr key={flavor.id}>
                 <td>
                   <img

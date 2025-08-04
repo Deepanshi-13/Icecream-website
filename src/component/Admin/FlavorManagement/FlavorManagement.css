@@ -166,6 +166,31 @@ td {
   color: #333;
 }
 
+
+/* search input */
+.search-group {
+  margin: 1rem 2rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  /* margin-left: 240px;  */
+}
+
+.search-input {
+  padding: 1rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  /* width: 240px; */
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.search-input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+}
+
 /* Badges */
 .status-badge {
   padding: 4px 8px;
