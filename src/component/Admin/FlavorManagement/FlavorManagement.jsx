@@ -25,7 +25,7 @@ const FlavorManagement = () => {
   useEffect(() => {
     console.log('This is for flavor');
     fetchFlavors();
-  }, []);
+  }, );
 
   const handleFormSubmit = async (data) => {
     try {

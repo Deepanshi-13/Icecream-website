@@ -41,6 +41,13 @@ const Navbar = () => {
   const userMenu = (
     <AntMenu>
       <AntMenu.Item
+        key="profile"
+        icon={<UserOutlined />}
+        onClick={() => navigate("/profile")}
+      >
+        Profile
+      </AntMenu.Item>
+      <AntMenu.Item
         key="logout"
         icon={<LogoutOutlined />}
         onClick={handleLogout}
@@ -94,7 +101,6 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Cart logic handled inside CartMenu */}
       <CartMenu
         anchorEl={anchorEl}
         open={open}

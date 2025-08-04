@@ -5,13 +5,13 @@ import {
   Route,
   Navigate,
   Outlet,
-  useLocation,
 } from "react-router-dom";
 
 import Home from "../Pages/Home";
 import Shop from "../Pages/Shop";
 import About from "../Pages/About";
 import Contact from "../Pages/Contact";
+import Profile from "../Pages/Profile";
 import AppLayout from "../Layout/AppLayout";
 import FlavorDetails from "../component/Flavor/FlavorDetails";
 import AuthPage from "../Pages/AuthPage";
@@ -52,6 +52,7 @@ const AppRoute = () => {
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/customerManagement" element={<CustomerManagement />} />
               <Route path="/flavorManagement" element={<FlavorManagement />} />
+              <Route path="/adminProfile" element={<Profile />} />
             </Route>
           </Route>
         </Route>
@@ -64,6 +65,7 @@ const AppRoute = () => {
               <Route path="/shop" element={<Shop />} />
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/profile" element={<Profile />} />
               <Route path="/flavorDetails/:id" element={<FlavorDetails />} />
               <Route path="/flavor" element={<Flavor />} />
               <Route path="/checkout" element={<Checkout />} />

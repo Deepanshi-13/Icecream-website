@@ -1,97 +1,35 @@
 import "./SpecialItems.css";
-import falooda from "../../assets/falooda.png";
-import matkaKulfi from "../../assets/matkaKulfi.png";
-import icecreamRoll from "../../assets/icecreamRoll.png";
-import scoop from "../../assets/scoop.png";
-import tuttiFrutti from "../../assets/tuttiFruti.png";
-import cone from "../../assets/cone.png";
+
 import Button from "../Button/Button";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { FaStar, FaRegStar } from "react-icons/fa";
 import { ADD } from "../../Redux/actions/action";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, onSnapshot } from "firebase/firestore";
 import { db } from "../../firebase/Firebase";
 import { useEffect, useState } from "react";
 
-
-// export const specialIcecream = [
-//   {
-//     id: "1",
-//     image: falooda,
-//     flavor: "Falooda",
-//     background: "#FFD1DC",
-//     rating: 4,
-//     previousprice: "₹85",
-//     price: "80",
-//   },
-//   {
-//     id: "2",
-//     image: matkaKulfi,
-//     flavor: "Matka Kulfi",
-//     background: "#E0C097",
-//     rating: 4,
-//     previousprice: "₹85",
-//     price: "80",
-//   },
-//   {
-//     id: "3",
-//     image: icecreamRoll,
-//     flavor: "Icecream Roll",
-//     background: "#FFE4E1",
-//     rating: 4,
-//     previousprice: "₹85",
-//     price: "80",
-//   },
-//   {
-//     id: "4",
-//     image: scoop,
-//     flavor: "Scoop",
-//     background: "#D2B48C",
-//     rating: 4,
-//     previousprice: "₹85",
-//     price: "80",
-//   },
-//   {
-//     id: "5",
-//     image: tuttiFrutti,
-//     flavor: "Tutti Frutti",
-//     background: "#fce8c3",
-//     rating: 4,
-//     previousprice: "₹85",
-//     price: "80",
-//   },
-//   {
-//     id: "6",
-//     image: cone,
-//     flavor: "Cone",
-//     background: "#E6E6FA",
-//     rating: 4,
-//     previousprice: "₹85",
-//     price: "80",
-//   },
-// ];
 
 const SpecialItems = ({ searchQuery }) => {
   const [specialFlavors, setSpecialFlavors] = useState([]);
 
   useEffect(() => {
-    const fetchSpecialFlavors = async () => {
-      try {
-        const snapshot = await getDocs(collection(db, 'flavors'));
+    const unsubscribe = onSnapshot(
+      collection(db, 'flavors'),
+      (snapshot) => {
         const data = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-
-        // Filter only "Special" type items
-        const specialData = data.filter(item => item.type === 'Special');
+        const specialData = data.filter(item => item.type === 'Special').filter(item => item.status?.toLowerCase() === "active");
         setSpecialFlavors(specialData);
-      } catch (error) {
+      },
+      (error) => {
         toast.error('Failed to fetch special flavors');
-        console.error('Error:', error);
+        console.error('Error fetching special flavors:', error);
       }
-    };
+    );
 
-    fetchSpecialFlavors();
+    return () => unsubscribe();
   }, []);
+
 
   const dispatch = useDispatch();
   const send = (item) => {

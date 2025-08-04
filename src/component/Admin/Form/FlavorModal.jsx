@@ -96,7 +96,11 @@ const FlavorModal = ({ initialData, onClose }) => {
         <div className="form-row">
           <div className="form-group">
             <label>Type (e.g. topSeller)</label>
-            <input name="type" value={formData.type} onChange={handleChange} required />
+            <select name="type" value={formData.type} onChange={handleChange}>
+              <option value="BestSeller">BestSeller</option>
+              <option value="New">New</option>
+              <option value="Trending">Trending</option>
+            </select>
           </div>
           <div className="form-group">
             <label>Status</label>

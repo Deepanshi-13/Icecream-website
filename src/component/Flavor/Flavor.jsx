@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { setFlavors } from "../../Redux/actions/action";
 import { ADD } from "../../Redux/actions/action";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, onSnapshot } from "firebase/firestore";
 import { db } from "../../firebase/Firebase";
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -21,23 +21,20 @@ const Flavor = ({ searchQuery, setSearchQuery }) => {
 
   // Fetch flavors from Firestore
   useEffect(() => {
-    const fetchFlavors = async () => {
-      try {
-        const querySnapshot = await getDocs(collection(db, "flavors"));
-        const flavorsFromFirebase = querySnapshot.docs.map(doc => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-        console.log(flavorsFromFirebase);
-        dispatch(setFlavors(flavorsFromFirebase));
-      } catch (error) {
-        console.error("Error fetching flavors from Firestore:", error);
-        toast.error("Failed to load flavors.");
-      }
-    };
+    const unsubscribe = onSnapshot(collection(db, "flavors"), (snapshot) => {
+      const flavorsFromFirebase = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      dispatch(setFlavors(flavorsFromFirebase));
+    }, (error) => {
+      console.error("Error fetching flavors from Firestore:", error);
+      toast.error("Failed to load flavors.");
+    });
 
-    fetchFlavors();
+    return () => unsubscribe(); // cleanup on unmount
   }, [dispatch]);
+
 
   const send = (item) => {
     dispatch(ADD(item));
@@ -46,7 +43,7 @@ const Flavor = ({ searchQuery, setSearchQuery }) => {
         position: "top-right",
         autoClose: 1000,
       });
-    }, 100);
+    }, 1000);
   };
 
   const startIndex = (currentPage - 1) * ItemsPerPage;
@@ -57,7 +54,9 @@ const Flavor = ({ searchQuery, setSearchQuery }) => {
   const totalPages = Math.ceil(filterItems.length / ItemsPerPage);
 
   useEffect(() => {
-    let filtered = allFlavors.filter(item => item.type !== "Special");
+    let filtered = allFlavors
+      .filter(item => item.type !== "Special")
+      .filter(item => item.status?.toLowerCase() === "active");
 
     if (searchQuery) {
       setCategory("");
@@ -82,10 +81,12 @@ const Flavor = ({ searchQuery, setSearchQuery }) => {
     setCurrentPage((prev) => Math.min(prev + 1, totalPages));
 
   const renderStars = (rating) => {
+    const fullStars = rating >= 4.5 ? 5 : 4;
+``
     return Array(5)
       .fill(0)
       .map((_, i) =>
-        i < rating ? (
+        i < fullStars ? (
           <FaStar key={i} className="star filled" />
         ) : (
           <FaRegStar key={i} className="star" />
@@ -108,7 +109,7 @@ const Flavor = ({ searchQuery, setSearchQuery }) => {
             className={`category-btn ${category === "BestSeller" ? "active" : ""}`}
             onClick={() => setCategory("BestSeller")}
           >
-            Top Seller
+            BestSeller
           </button>
           <button
             className={`category-btn ${category === "Trending" ? "active" : ""}`}

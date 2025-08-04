@@ -1,7 +1,7 @@
 import React from "react";
 import "../AdminNavbar/AdminNavbar.css";
 import icecream from "../../../assets/ice-cream.png";
-import { LogoutOutlined, UserOutlined } from "@ant-design/icons";
+import { LogoutOutlined, UserOutlined, IdcardOutlined } from "@ant-design/icons";
 import { Avatar, Dropdown, Menu as AntMenu } from "antd";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
@@ -21,8 +21,19 @@ const AdminNavbar = () => {
     });
   };
 
+  const handleProfile = () => {
+    navigate("/adminProfile");
+  };
+
   const userMenu = (
     <AntMenu>
+      <AntMenu.Item
+        key="profile"
+        icon={<IdcardOutlined />}
+        onClick={handleProfile}
+      >
+        Profile
+      </AntMenu.Item>
       <AntMenu.Item
         key="logout"
         icon={<LogoutOutlined />}
@@ -47,8 +58,8 @@ const AdminNavbar = () => {
               style={{
                 backgroundColor: "green",
                 cursor: "pointer",
-                marginLeft:"60rem",
-                padding:"1.4rem"
+                marginLeft: "60rem",
+                padding: "1.4rem"
               }}
             >
               {username ? username[0].toUpperCase() : <UserOutlined />}

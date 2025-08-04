@@ -12,7 +12,7 @@ const AuthPage = () => {
   const navigate = useNavigate();
 
   const onFinish = async (values) => {
-    const { email, password } = values;
+    const { email, password, username } = values;
 
     try {
       if (isLogin) {
@@ -20,7 +20,11 @@ const AuthPage = () => {
         toast.success("Logged in successfully!");
         localStorage.setItem("token", user.uid);
 
-        // Set role based on email
+        // Derive username from email (before @) if not already stored
+        const storedUsername = email.split("@")[0];
+        localStorage.setItem("username", storedUsername);
+
+        //Role based access
         if (email === "admin41d@gmail.com") {
           localStorage.setItem("role", "admin");
           navigate("/dashboard");
@@ -33,6 +37,9 @@ const AuthPage = () => {
       } else {
         const user = await signUpWithEmail(email, password);
         toast.success("Account created successfully!");
+
+        // Store username on sign-up
+        localStorage.setItem("username", username);
         console.log("User created:", user);
       }
 
