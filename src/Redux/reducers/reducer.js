@@ -1,4 +1,4 @@
-import {SET_FLAVORS} from "../actions/action";
+import {SET_FLAVORS} from "../actions/action.js";
 const INIT_FLAVORS = {
   flavors: [],
 };

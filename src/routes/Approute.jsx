@@ -7,20 +7,20 @@ import {
   Outlet,
 } from "react-router-dom";
 
-import Home from "../Pages/Home";
-import Shop from "../Pages/Shop";
-import About from "../Pages/About";
-import Contact from "../Pages/Contact";
-import Profile from "../Pages/Profile";
-import AppLayout from "../Layout/AppLayout";
-import FlavorDetails from "../component/Flavor/FlavorDetails";
-import AuthPage from "../Pages/AuthPage";
-import Dashboard from "../component/Admin/Dashboard/Dashboard";
-import CustomerManagement from "../component/Admin/CustomerManagement/CustomerManagement";
-import FlavorManagement from "../component/Admin/FlavorManagement/FlavorManagement";
-import DashboardLayout from "../Layout/DashboardLayout";
-import Flavor from "../component/Flavor/Flavor";
-import Checkout from "../component/Checkout/Checkout";
+import Home from "../Pages/Home.jsx";
+import Shop from "../Pages/Shop.jsx";
+import About from "../Pages/About.jsx";
+import Contact from "../Pages/Contact.jsx";
+import Profile from "../Pages/Profile.jsx";
+import AppLayout from "../Layout/AppLayout.jsx";
+import FlavorDetails from "../component/Flavor/FlavorDetails.jsx";
+import AuthPage from "../Pages/AuthPage.jsx";
+import Dashboard from "../component/Admin/Dashboard/Dashboard.jsx";
+import CustomerManagement from "../component/Admin/CustomerManagement/CustomerManagement.jsx";
+import FlavorManagement from "../component/Admin/FlavorManagement/FlavorManagement.jsx";
+import DashboardLayout from "../Layout/DashboardLayout.jsx";
+import Flavor from "../component/Flavor/Flavor.jsx";
+import Checkout from "../component/Checkout/Checkout.jsx";
 
 const PrivateRoute = () => {
   const isAuth = localStorage.getItem("token");

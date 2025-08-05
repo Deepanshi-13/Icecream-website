@@ -3,7 +3,7 @@ import "./Crafting.css";
 import mulberry from "../../assets/mulberry.png";
 import strawberry from "../../assets/strawberry.png";
 import { useNavigate } from "react-router-dom";
-import Button from "../Button/Button";
+import Button from "../Button/Button.jsx";
 const Crafting = () => {
   const navigate = useNavigate();
   return (

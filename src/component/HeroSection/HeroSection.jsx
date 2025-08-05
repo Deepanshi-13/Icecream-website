@@ -5,7 +5,7 @@ import mainIceCream from "../../assets/mainIceCream.jpg";
 import bg from "../../assets/bg.png";
 import candy from "../../assets/candy.png";
 import smallCake from "../../assets/smallCake.png";
-import Button from "../Button/Button";
+import Button from "../Button/Button.jsx";
 import { useNavigate } from "react-router-dom";
 
 const Count = () => {

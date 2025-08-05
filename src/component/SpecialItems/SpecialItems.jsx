@@ -1,11 +1,11 @@
 import "./SpecialItems.css";
-import Button from "../Button/Button";
+import Button from "../Button/Button.jsx";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { FaStar, FaRegStar } from "react-icons/fa";
 import { ADD } from "../../Redux/actions/action";
 import { collection, onSnapshot } from "firebase/firestore";
-import { db } from "../../firebase/Firebase";
+import { db } from "../../firebase/Firebase.js";
 import { useEffect, useState } from "react";
 
 

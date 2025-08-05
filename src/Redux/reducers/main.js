@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
-import { cartReducer } from "./reducer";
-import {flavorReducer} from "./reducer";
+import { cartReducer } from "./reducer.js";
+import {flavorReducer} from "./reducer.js";
 const rootReducer = combineReducers({
   cart: cartReducer,
   flavor: flavorReducer,

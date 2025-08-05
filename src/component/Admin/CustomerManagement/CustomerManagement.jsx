@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import ReusableModal from '../Modal/ReuseableModal';
+import ReusableModal from '../Modal/ReuseableModal.jsx';
 import "./CustomerManagement.css";
-import CustomerForm from './CustomerForm';
+import CustomerForm from './CustomerForm.jsx';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 

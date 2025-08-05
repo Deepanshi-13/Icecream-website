@@ -3,7 +3,7 @@ import { Form, Input, Button } from "antd";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./AuthPage.css";
-import { signUpWithEmail, signInWithEmail } from "../firebase/Firebase";
+import { signUpWithEmail, signInWithEmail } from "../firebase/Firebase.js";
 import { useNavigate } from "react-router-dom";
 
 const AuthPage = () => {

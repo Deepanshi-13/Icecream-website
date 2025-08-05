@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './FlavorManagement.css';
-import ReusableModal from '../Modal/ReuseableModal';
+import ReusableModal from '../Modal/ReuseableModal.jsx';
 import { toast } from 'react-toastify';
-import FlavorModal from '../Form/FlavorModal';
+import FlavorModal from '../Form/FlavorModal.jsx';
 import { collection, addDoc, getDocs, deleteDoc, doc, updateDoc } from 'firebase/firestore';
-import { db } from '../../../firebase/Firebase';
+import { db } from '../../../firebase/Firebase.js';
 
 const FlavorManagement = () => {
   const [flavors, setFlavors] = useState([]);

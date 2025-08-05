@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Flavor.css";
-import Button from "../Button/Button";
+import Button from "../Button/Button.jsx";
 import { FaArrowLeft, FaArrowRight, FaStar, FaRegStar } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";

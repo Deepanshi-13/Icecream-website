@@ -1,6 +1,6 @@
 // Shop.jsx
-import Flavor from "../component/Flavor/Flavor";
-import SpecialItems from "../component/SpecialItems/SpecialItems";
+import Flavor from "../component/Flavor/Flavor.jsx";
+import SpecialItems from "../component/SpecialItems/SpecialItems.jsx";
 import "./Shop.css";
 import React, { useState } from "react";
 const Shop = () => {
