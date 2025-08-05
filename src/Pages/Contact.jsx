@@ -3,7 +3,7 @@ import emailjs from "emailjs-com";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./Contact.css";
-import Footer from "../component/Footer/Footer";
+
 
 const Contact = () => {
   const [loading, setLoading] = useState(false);
@@ -74,7 +74,6 @@ const Contact = () => {
           <ToastContainer position="top-center" />
         </div>
       </section>
-      <Footer/>
     </>
   );
 };

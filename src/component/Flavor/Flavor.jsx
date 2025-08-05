@@ -82,7 +82,6 @@ const Flavor = ({ searchQuery, setSearchQuery }) => {
 
   const renderStars = (rating) => {
     const fullStars = rating >= 4.5 ? 5 : 4;
-``
     return Array(5)
       .fill(0)
       .map((_, i) =>

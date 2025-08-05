@@ -18,6 +18,7 @@ export const auth = getAuth(app);
 export const db = getFirestore(app);
 
 // Sign up - save user with default role "user"
+
 export const signUpWithEmail = async (email, password) => {
   const userCredential = await createUserWithEmailAndPassword(auth, email, password);
   const user = userCredential.user;

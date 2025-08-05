@@ -2,7 +2,7 @@ import React from 'react';
 import "./About.css";
 import aboutImage from "../assets/about.png";
 import { FaIceCream, FaHeart, FaLeaf, FaSmile } from 'react-icons/fa';
-import Footer from '../component/Footer/Footer';
+
 
 const About = () => {
   return (
@@ -69,7 +69,6 @@ const About = () => {
         </section>
       </main>
     </div>
-    <Footer/>
     </>
   )
 }

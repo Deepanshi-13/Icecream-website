@@ -1,5 +1,4 @@
 import "./SpecialItems.css";
-
 import Button from "../Button/Button";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
@@ -50,16 +49,17 @@ const SpecialItems = ({ searchQuery }) => {
   });
 
   const renderStars = (rating) => {
-    return Array(5)
-      .fill(0)
-      .map((_, i) =>
-        i < rating ? (
-          <FaStar key={i} className="star filled" />
-        ) : (
-          <FaRegStar key={i} className="star" />
-        )
-      );
-  };
+     const fullStars = rating >= 4.5 ? 5 : 4;
+     return Array(5)
+       .fill(0)
+       .map((_, i) =>
+         i < fullStars ? (
+           <FaStar key={i} className="star filled" />
+         ) : (
+           <FaRegStar key={i} className="star" />
+         )
+       );
+   };
 
   return (
     <div className="special-container">

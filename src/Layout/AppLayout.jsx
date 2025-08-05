@@ -1,7 +1,8 @@
 // AppLayout.jsx
-import React, { useState } from "react";
+import React from "react";
 import Navbar from "../component/NavBar/Navbar";
 import { Outlet } from "react-router-dom";
+import Footer from "../component/Footer/Footer";
 
 const AppLayout = () => {
   return (
@@ -9,6 +10,7 @@ const AppLayout = () => {
       <main>
         <Navbar />
         <Outlet />
+        <Footer />
       </main>
     </div>
   );
