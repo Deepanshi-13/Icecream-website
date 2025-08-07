@@ -8,7 +8,6 @@ import {
 import icecream from "../../assets/ice-cream.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-import Menu from "@mui/material/Menu";
 import { Link, useNavigate } from "react-router-dom";
 import { Avatar, Dropdown, Menu as AntMenu } from "antd";
 import { ToastContainer, toast } from "react-toastify";

@@ -3,7 +3,7 @@ import './FlavorManagement.css';
 import ReusableModal from '../Modal/ReuseableModal.jsx';
 import { toast } from 'react-toastify';
 import FlavorModal from '../Form/FlavorModal.jsx';
-import { collection, addDoc, getDocs, deleteDoc, doc, updateDoc } from 'firebase/firestore';
+import { collection, addDoc, deleteDoc, doc, updateDoc,onSnapshot } from 'firebase/firestore';
 import { db } from '../../../firebase/Firebase.js';
 
 const FlavorManagement = () => {
@@ -16,21 +16,19 @@ const FlavorManagement = () => {
     setSearch(e.target.value);
   };
 
-  const fetchFlavors = async () => {
-    try {
-      const snapshot = await getDocs(collection(db, 'flavors'));
-      const data = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-      setFlavors(data);
-      console.log("Fetched flavors:", data);
-    } catch (error) {
-      toast.error("Error fetching flavors");
-    }
-  };
+ useEffect(() => {
+  const unsubscribe = onSnapshot(collection(db, 'flavors'), (snapshot) => {
+    const data = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    setFlavors(data);
+    console.log("Realtime flavors:", data);
+  }, (error) => {
+    toast.error("Error fetching real-time flavors");
+    console.error("Error: ", error);
+  });
 
-  useEffect(() => {
-    console.log('This is for flavor');
-    fetchFlavors();
-  }, []);
+  return () => unsubscribe();
+}, []);
+
 
   const handleFormSubmit = async (data) => {
     try {
@@ -42,7 +40,6 @@ const FlavorManagement = () => {
         await addDoc(collection(db, 'flavors'), data);
         toast.success("Flavor added successfully!");
       }
-      fetchFlavors();
     } catch (error) {
       toast.error("Error saving flavor data!");
     }
@@ -59,7 +56,6 @@ const FlavorManagement = () => {
     try {
       await deleteDoc(doc(db, 'flavors', id));
       toast.success("Flavor deleted!");
-      fetchFlavors();
     } catch (error) {
       toast.error("Failed to delete flavor.");
     }

@@ -17,7 +17,7 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
 
-// Sign up - save user with default role "user"
+// Sign up 
 
 export const signUpWithEmail = async (email, password) => {
   const userCredential = await createUserWithEmailAndPassword(auth, email, password);
@@ -31,7 +31,7 @@ export const signUpWithEmail = async (email, password) => {
   return user;
 };
 
-// Sign in - retrieve role
+// Sign in 
 export const signInWithEmail = async (email, password) => {
   const userCredential = await signInWithEmailAndPassword(auth, email, password);
   const user = userCredential.user;

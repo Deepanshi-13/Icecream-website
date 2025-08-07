@@ -38,7 +38,6 @@ const UserRoute = () => {
   return role === "user" ? <Outlet /> : <Navigate to="/dashboard" />;
 };
 
-
 const AppRoute = () => {
   return (
     <Router>

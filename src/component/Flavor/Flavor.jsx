@@ -77,8 +77,7 @@ const Flavor = ({ searchQuery, setSearchQuery }) => {
   }, [category, searchQuery, allFlavors]);
 
   const PreviousPage = () => setCurrentPage((prev) => Math.max(prev - 1, 1));
-  const NextPage = () =>
-    setCurrentPage((prev) => Math.min(prev + 1, totalPages));
+  const NextPage = () => setCurrentPage((prev) => Math.min(prev + 1, totalPages));
 
   const renderStars = (rating) => {
     const fullStars = rating >= 4.5 ? 5 : 4;
@@ -168,7 +167,7 @@ const Flavor = ({ searchQuery, setSearchQuery }) => {
         ))}
       </div>
 
-      {filterItems.length > 3 && (
+      {filterItems.length > ItemsPerPage && (
         <div className="pagination">
           <button
             onClick={PreviousPage}

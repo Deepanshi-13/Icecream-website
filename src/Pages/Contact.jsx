@@ -4,7 +4,6 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./Contact.css";
 
-
 const Contact = () => {
   const [loading, setLoading] = useState(false);
 
@@ -25,8 +24,8 @@ const Contact = () => {
         (result) => {
           // Send auto-reply to user
           emailjs.send(
-            "service_q7j4y2j",     
-            "template_3taunfi", 
+            "service_q7j4y2j",
+            "template_3taunfi",
             {
               name: form.name.value,
               email: form.email.value,
